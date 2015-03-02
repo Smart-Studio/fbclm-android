@@ -1,0 +1,17 @@
+language: android
+
+jdk:
+ - oraclejdk7
+ - oraclejdk8
+
+android:
+  components:
+    - build-tools-21.1.2
+    - android-21
+
+script:
+  - ./gradlew clean assembleDebug
+
+branches:
+  except:
+    - gh-pages
