@@ -38,3 +38,7 @@
 -keep class com.squareup.okhttp.** { *; }
 -dontwarn com.squareup.okhttp.**
 -dontwarn okio.*
+
+# Rx Java
+-keep class sun.misc.Unsafe { *; }
+-dontwarn rx.**
