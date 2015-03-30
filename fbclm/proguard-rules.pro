@@ -15,3 +15,30 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+#Butterknife
+-keep class butterknife.** { *; }
+-dontwarn butterknife.internal.**
+-keep class **$$ViewInjector { *; }
+
+-keepclasseswithmembernames class * {
+    @butterknife.* <fields>;
+}
+
+-keepclasseswithmembernames class * {
+    @butterknife.* <methods>;
+}
+
+# Retrofit
+-keep class retrofit.** { *; }
+-keepclasseswithmembers class * {@retrofit.http.* <methods>; }
+-dontwarn retrofit.**
+
+# OKHttp
+-keep class com.squareup.okhttp.** { *; }
+-dontwarn com.squareup.okhttp.**
+-dontwarn okio.*
+
+# Rx Java
+-keep class sun.misc.Unsafe { *; }
+-dontwarn rx.**
