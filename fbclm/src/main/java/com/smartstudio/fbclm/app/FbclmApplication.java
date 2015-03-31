@@ -14,19 +14,30 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm;
+package com.smartstudio.fbclm.app;
 
-import android.app.Activity;
-import android.os.Bundle;
+import android.app.Application;
+import android.content.Context;
 
 /**
  * TODO Add a class header comment
  */
-public class SplashScreen extends Activity {
+public class FbclmApplication extends Application {
+    private FbclmComponent component;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+    public void onCreate() {
+        super.onCreate();
+        component = Dagger_FbclmComponent.builder()
+                .fbclmModule(new FbclmModule(this))
+                .build();
+    }
+
+    public FbclmComponent getComponent() {
+        return component;
+    }
+
+    public static FbclmApplication get(Context context) {
+        return (FbclmApplication) context.getApplicationContext();
     }
 }
