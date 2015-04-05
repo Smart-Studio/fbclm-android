@@ -14,19 +14,30 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm;
+package com.smartstudio.fbclm.injection;
 
-import android.app.Activity;
-import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+
+import com.smartstudio.fbclm.app.FbclmComponent;
+import com.smartstudio.fbclm.ui.fbclm.FbclmActivity;
+import com.smartstudio.fbclm.ui.fbclm.FbclmPresenter;
+import com.smartstudio.fbclm.ui.fbclm.FbclmView;
+
+import dagger.Component;
 
 /**
  * TODO Add a class header comment
  */
-public class SplashScreen extends Activity {
+@Component(
+        dependencies = {FbclmComponent.class},
+        modules = FbclmActivityModule.class
+)
+public interface FbclmActivityComponent {
+    void inject(FbclmActivity activity);
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
-    }
+    FbclmView provideFbclmView();
+
+    FbclmPresenter provideFbclmPresenter();
+
+    FragmentManager provideFragmentManager();
 }
