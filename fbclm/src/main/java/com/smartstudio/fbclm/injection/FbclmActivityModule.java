@@ -16,9 +16,11 @@
 
 package com.smartstudio.fbclm.injection;
 
-import com.smartstudio.fbclm.ui.splash.SplashScreenPresenter;
-import com.smartstudio.fbclm.ui.splash.SplashScreenPresenterImpl;
-import com.smartstudio.fbclm.ui.splash.SplashView;
+import android.support.v4.app.FragmentManager;
+
+import com.smartstudio.fbclm.ui.fbclm.FbclmPresenter;
+import com.smartstudio.fbclm.ui.fbclm.FbclmPresenterImpl;
+import com.smartstudio.fbclm.ui.fbclm.FbclmView;
 
 import dagger.Module;
 import dagger.Provides;
@@ -27,23 +29,27 @@ import dagger.Provides;
  * TODO Add a class header comment
  */
 @Module
-public class SplashScreenModule {
+public class FbclmActivityModule {
+    private FbclmView mFbclmView;
+    private FragmentManager mFragmentManager;
 
-    private SplashView splashView;
-
-    public SplashScreenModule(SplashView splashView) {
-        this.splashView = splashView;
+    public FbclmActivityModule(FbclmView fbclmView, FragmentManager fragmentManager) {
+        mFbclmView = fbclmView;
+        mFragmentManager = fragmentManager;
     }
 
     @Provides
-    public SplashView provideSplashView() {
-        return splashView;
+    public FbclmView provideFbclmView() {
+        return mFbclmView;
     }
 
     @Provides
-    public SplashScreenPresenter provideSplashScreenPresenter(SplashScreenPresenterImpl
-                                                                      splashScreenPresenter) {
-        return splashScreenPresenter;
+    public FbclmPresenter provideFbclmPresenter(FbclmPresenterImpl fbclmPresenter) {
+        return fbclmPresenter;
     }
 
+    @Provides
+    public FragmentManager provideFragmentManager() {
+        return mFragmentManager;
+    }
 }

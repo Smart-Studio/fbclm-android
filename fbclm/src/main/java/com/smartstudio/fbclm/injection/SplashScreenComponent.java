@@ -16,10 +16,10 @@
 
 package com.smartstudio.fbclm.injection;
 
-import com.smartstudio.fbclm.SplashScreenActivity;
+import com.smartstudio.fbclm.ui.splash.SplashScreenActivity;
 import com.smartstudio.fbclm.app.FbclmComponent;
-import com.smartstudio.fbclm.ui.SplashScreenPresenter;
-import com.smartstudio.fbclm.ui.SplashView;
+import com.smartstudio.fbclm.ui.splash.SplashScreenPresenter;
+import com.smartstudio.fbclm.ui.splash.SplashView;
 
 import dagger.Component;
 

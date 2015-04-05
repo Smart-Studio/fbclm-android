@@ -28,5 +28,5 @@ import dagger.Component;
 @Component(modules = FbclmModule.class)
 public interface FbclmComponent {
     @Named("Application")
-    Context injectContext();
+    Context provideContext();
 }

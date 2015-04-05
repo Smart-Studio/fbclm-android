@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui;
+package com.smartstudio.fbclm.ui.fbclm;
 
 /**
  * TODO Add a class header comment
  */
-public interface SplashScreenPresenter {
+public interface FbclmView {
 }

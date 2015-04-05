@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Fbclm</string>
+    <string name="app_name" translatable="false">Fbclm</string>
+    <string name="splash_title" translatable="false">Federación Baloncesto Castilla-La Mancha</string>
+    <string name="loading">Loading</string>
 </resources>

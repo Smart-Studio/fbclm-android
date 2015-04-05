@@ -14,31 +14,37 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm;
+package com.smartstudio.fbclm.ui.splash;
 
-import android.app.Activity;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.widget.TextView;
 
+import com.smartstudio.fbclm.R;
 import com.smartstudio.fbclm.app.FbclmApplication;
 import com.smartstudio.fbclm.injection.Dagger_SplashScreenComponent;
 import com.smartstudio.fbclm.injection.SplashScreenComponent;
 import com.smartstudio.fbclm.injection.SplashScreenModule;
-import com.smartstudio.fbclm.ui.SplashScreenPresenter;
-import com.smartstudio.fbclm.ui.SplashView;
 
 import javax.inject.Inject;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 /**
  * TODO Add a class header comment
  */
-public class SplashScreenActivity extends Activity implements SplashView {
+public class SplashScreenActivity extends FragmentActivity implements SplashView {
     private SplashScreenComponent mComponent;
 
+    @InjectView(R.id.splash_text_loading)
+    TextView mLoadingText;
     @Inject
     SplashScreenPresenter mPresenter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
@@ -47,12 +53,24 @@ public class SplashScreenActivity extends Activity implements SplashView {
                 .splashScreenModule(new SplashScreenModule(this))
                 .build();
         mComponent.inject(this);
+        ButterKnife.inject(this);
+
+        startLoadingAnimation();
     }
 
-
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
         mComponent = null;
     }
+
+    private void startLoadingAnimation(){
+        AnimationDrawable loadingAnimation = (AnimationDrawable) getResources()
+                .getDrawable(R.drawable.animated_ellipsis);
+        mLoadingText.setCompoundDrawablesWithIntrinsicBounds(null, null, loadingAnimation, null);
+        if (loadingAnimation != null) {
+            loadingAnimation.start();
+        }
+    }
+
 }

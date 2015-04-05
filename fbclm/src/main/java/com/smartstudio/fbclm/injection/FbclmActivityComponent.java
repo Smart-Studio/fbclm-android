@@ -14,11 +14,30 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui;
+package com.smartstudio.fbclm.injection;
+
+import android.support.v4.app.FragmentManager;
+
+import com.smartstudio.fbclm.app.FbclmComponent;
+import com.smartstudio.fbclm.ui.fbclm.FbclmActivity;
+import com.smartstudio.fbclm.ui.fbclm.FbclmPresenter;
+import com.smartstudio.fbclm.ui.fbclm.FbclmView;
+
+import dagger.Component;
 
 /**
  * TODO Add a class header comment
  */
-public interface SplashView {
+@Component(
+        dependencies = {FbclmComponent.class},
+        modules = FbclmActivityModule.class
+)
+public interface FbclmActivityComponent {
+    void inject(FbclmActivity activity);
 
+    FbclmView provideFbclmView();
+
+    FbclmPresenter provideFbclmPresenter();
+
+    FragmentManager provideFragmentManager();
 }

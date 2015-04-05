@@ -14,20 +14,10 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui;
-
-import javax.inject.Inject;
+package com.smartstudio.fbclm.ui.splash;
 
 /**
  * TODO Add a class header comment
  */
-public class SplashScreenPresenterImpl implements SplashScreenPresenter {
-    private SplashView splashView;
-
-    @Inject
-    public SplashScreenPresenterImpl(SplashView splashView){
-        this.splashView = splashView;
-    }
-
-
+public interface SplashScreenPresenter {
 }

@@ -14,31 +14,20 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.app;
+package com.smartstudio.fbclm.ui.splash;
 
-import android.app.Application;
-import android.content.Context;
-
-import javax.inject.Named;
-
-import dagger.Module;
-import dagger.Provides;
+import javax.inject.Inject;
 
 /**
  * TODO Add a class header comment
  */
-@Module
-public class FbclmModule {
-    private Application application;
+public class SplashScreenPresenterImpl implements SplashScreenPresenter {
+    private SplashView splashView;
 
-    public FbclmModule(Application application) {
-        this.application = application;
+    @Inject
+    public SplashScreenPresenterImpl(SplashView splashView){
+        this.splashView = splashView;
     }
 
-    @Provides
-    @Named("Application")
-    public Context provideContext() {
-        return application;
-    }
 
 }
