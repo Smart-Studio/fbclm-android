@@ -73,12 +73,12 @@ android {
 
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-
         debug {
-            signingConfigs.debug
+            signingConfig signingConfigs.debug
             applicationIdSuffix '.debug'
             versionNameSuffix ' ' + gitSha() + ' ' + buildTime()
             minifyEnabled false
@@ -113,9 +113,8 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.2.3@aar') {
         transitive = true;
     }
-
     testCompile 'junit:junit:4.12'
-    testCompile "org.mockito:mockito-core:2.0.5-beta"
+    testCompile 'org.mockito:mockito-core:2.0.5-beta'
 }
 
 preBuild.doFirst {
