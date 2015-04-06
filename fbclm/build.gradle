@@ -1,11 +1,38 @@
-def versionMajor = 1
+import java.text.SimpleDateFormat
+
+def versionMajor = 0
 def versionMinor = 1
 def versionPatch = 0
 
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
 apply plugin: 'com.neenbedankt.android-apt'
 
+
+def gitSha() {
+    return 'git rev-parse --short HEAD'.execute().text.trim()
+}
+
+def buildTime() {
+    def df = new SimpleDateFormat("HH:mm yyyy-MM-dd")
+    df.setTimeZone(TimeZone.getTimeZone("UTC"))
+    return df.format(new Date())
+}
 
 android {
     compileSdkVersion 22
@@ -16,9 +43,12 @@ android {
         minSdkVersion 15
         targetSdkVersion 22
         versionCode versionMajor * 1000000 + versionMinor * 10000 + versionPatch * 100
-        versionName "1.0"
-    }
+        versionName versionMajor + "." + versionMinor + "." + versionPatch
 
+        manifestPlaceholders = [
+                fabricApiKey: fabric_api_key
+        ]
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -50,6 +80,7 @@ android {
         debug {
             signingConfigs.debug
             applicationIdSuffix '.debug'
+            versionNameSuffix ' ' + gitSha() + ' ' + buildTime()
             minifyEnabled false
             testCoverageEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -68,6 +99,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.0.0'
+    compile 'com.android.support:support-annotations:20.0.0'
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'com.squareup.picasso:picasso:2.5.0'
     compile 'com.squareup.okhttp:okhttp:2.2.0'
@@ -78,8 +110,23 @@ dependencies {
     compile 'de.greenrobot:eventbus:2.4.0'
     compile 'io.reactivex:rxjava:1.0.8'
     compile 'io.reactivex:rxandroid:0.24.0'
-
+    compile('com.crashlytics.sdk.android:crashlytics:2.2.3@aar') {
+        transitive = true;
+    }
 
     testCompile 'junit:junit:4.12'
     testCompile "org.mockito:mockito-core:2.0.5-beta"
+}
+
+preBuild.doFirst {
+    Properties gradleProperties = new Properties()
+    gradleProperties.load(new FileInputStream(rootProject.file("gradle.properties")))
+
+    def fabricApiSecret = gradleProperties.getProperty("fabric_api_secret")
+    Properties fabricProperties = new Properties()
+    File fabricPropertiesFile = new File(project.projectDir, "fabric.properties")
+    fabricPropertiesFile.createNewFile()
+    fabricProperties.load(new FileInputStream(fabricPropertiesFile))
+    fabricProperties.setProperty("apiSecret", fabricApiSecret)
+    fabricProperties.store(new FileOutputStream(fabricPropertiesFile), null)
 }
