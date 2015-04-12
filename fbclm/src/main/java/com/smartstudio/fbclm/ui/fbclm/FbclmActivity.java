@@ -21,7 +21,7 @@ import android.support.v4.app.FragmentActivity;
 
 import com.smartstudio.fbclm.R;
 import com.smartstudio.fbclm.app.FbclmApplication;
-import com.smartstudio.fbclm.injection.Dagger_FbclmActivityComponent;
+import com.smartstudio.fbclm.injection.DaggerFbclmActivityComponent;
 import com.smartstudio.fbclm.injection.FbclmActivityComponent;
 import com.smartstudio.fbclm.injection.FbclmActivityModule;
 
@@ -41,7 +41,7 @@ public class FbclmActivity extends FragmentActivity implements FbclmView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fbclm);
 
-        mComponent = Dagger_FbclmActivityComponent.builder()
+        mComponent = DaggerFbclmActivityComponent.builder()
                 .fbclmComponent(FbclmApplication.get(this).getComponent())
                 .fbclmActivityModule(new FbclmActivityModule(this, getSupportFragmentManager()))
                 .build();

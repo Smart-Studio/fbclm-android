@@ -43,11 +43,13 @@ android {
         minSdkVersion 15
         targetSdkVersion 22
         versionCode versionMajor * 1000000 + versionMinor * 10000 + versionPatch * 100
-        versionName versionMajor + "." + versionMinor + "." + versionPatch
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
 
         manifestPlaceholders = [
                 fabricApiKey: fabric_api_key
         ]
+
+        ext.betaDistributionGroupAliasesFilePath=fabric_testers_file
     }
 
     compileOptions {
@@ -77,10 +79,11 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
         debug {
             signingConfig signingConfigs.debug
             applicationIdSuffix '.debug'
-            versionNameSuffix ' ' + gitSha() + ' ' + buildTime()
+            versionNameSuffix " ${gitSha()} ${buildTime()}"
             minifyEnabled false
             testCoverageEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -104,9 +107,8 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.0'
     compile 'com.squareup.okhttp:okhttp:2.2.0'
     compile 'com.jakewharton:butterknife:6.1.0'
-    compile 'com.google.dagger:dagger:2.0-SNAPSHOT'
-    apt 'com.google.dagger:dagger-compiler:2.0-SNAPSHOT'
-    provided 'org.glassfish:javax.annotation:10.0-b28'
+    compile 'com.google.dagger:dagger:2.0'
+    apt 'com.google.dagger:dagger-compiler:2.0'
     compile 'de.greenrobot:eventbus:2.4.0'
     compile 'io.reactivex:rxjava:1.0.8'
     compile 'io.reactivex:rxandroid:0.24.0'

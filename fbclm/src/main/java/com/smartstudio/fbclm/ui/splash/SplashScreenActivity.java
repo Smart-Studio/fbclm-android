@@ -23,7 +23,7 @@ import android.widget.TextView;
 
 import com.smartstudio.fbclm.R;
 import com.smartstudio.fbclm.app.FbclmApplication;
-import com.smartstudio.fbclm.injection.Dagger_SplashScreenComponent;
+import com.smartstudio.fbclm.injection.DaggerSplashScreenComponent;
 import com.smartstudio.fbclm.injection.SplashScreenComponent;
 import com.smartstudio.fbclm.injection.SplashScreenModule;
 
@@ -48,7 +48,7 @@ public class SplashScreenActivity extends FragmentActivity implements SplashView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        mComponent = Dagger_SplashScreenComponent.builder()
+        mComponent = DaggerSplashScreenComponent.builder()
                 .fbclmComponent(FbclmApplication.get(this).getComponent())
                 .splashScreenModule(new SplashScreenModule(this))
                 .build();
@@ -64,7 +64,7 @@ public class SplashScreenActivity extends FragmentActivity implements SplashView
         mComponent = null;
     }
 
-    private void startLoadingAnimation(){
+    private void startLoadingAnimation() {
         AnimationDrawable loadingAnimation = (AnimationDrawable) getResources()
                 .getDrawable(R.drawable.animated_ellipsis);
         mLoadingText.setCompoundDrawablesWithIntrinsicBounds(null, null, loadingAnimation, null);
