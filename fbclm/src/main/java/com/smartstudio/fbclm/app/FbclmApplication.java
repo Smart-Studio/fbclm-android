@@ -19,6 +19,10 @@ package com.smartstudio.fbclm.app;
 import android.app.Application;
 import android.content.Context;
 
+import com.crashlytics.android.Crashlytics;
+
+import io.fabric.sdk.android.Fabric;
+
 /**
  * TODO Add a class header comment
  */
@@ -28,7 +32,8 @@ public class FbclmApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        component = Dagger_FbclmComponent.builder()
+        Fabric.with(this, new Crashlytics());
+        component = DaggerFbclmComponent.builder()
                 .fbclmModule(new FbclmModule(this))
                 .build();
     }
