@@ -3,11 +3,13 @@
 buildscript {
     repositories {
         jcenter()
+        maven { url 'https://www.testfairy.com/maven' }
     }
 
     dependencies{
         classpath 'me.tatarka:gradle-retrolambda:3.0.1'
         classpath 'com.android.tools.build:gradle:1.1.0'
+        classpath 'com.testfairy.plugins.gradle:testfairy:1.+'
     }
 }
 
