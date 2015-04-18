@@ -19,9 +19,9 @@ repositories {
 }
 
 apply plugin: 'com.android.application'
-apply plugin: 'io.fabric'
 apply plugin: 'me.tatarka.retrolambda'
-
+apply plugin: 'io.fabric'
+apply plugin: 'testfairy'
 
 def gitSha() {
     return 'git rev-parse --short HEAD'.execute().text.trim()
@@ -48,7 +48,9 @@ android {
                 fabricApiKey: fabric_api_key
         ]
 
-        ext.betaDistributionGroupAliasesFilePath=fabric_testers_file
+
+        ext.betaDistributionGroupAliasesFilePath = fabric_testers_file
+
     }
 
     compileOptions {
@@ -95,6 +97,15 @@ android {
 
     testOptions {
         unitTests.returnDefaultValues = true
+    }
+
+    testfairyConfig {
+        apiKey testfairy_api_key
+        videoRate "1"
+        videoQuality "medium"
+        iconWatermark true
+        maxDuration "10m"
+        iconWatermark true
     }
 }
 
