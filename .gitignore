@@ -1,8 +1,8 @@
 .gradle
-/local.properties
-/.idea/
-.DS_Store
-/build
+local.properties
+.idea/
+build
 *.iml
 gradle.properties
 fabric_testers.txt
+captures
