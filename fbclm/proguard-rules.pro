@@ -44,4 +44,4 @@
 -dontwarn rx.**
 
 #Retrolambda
--dontwarn java.lang.invoke.**
+-dontwarn java.lang.invoke.*
