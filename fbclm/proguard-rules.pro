@@ -42,3 +42,6 @@
 # Rx Java
 -keep class sun.misc.Unsafe { *; }
 -dontwarn rx.**
+
+#Retrolambda
+-dontwarn java.lang.invoke.**
