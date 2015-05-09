@@ -14,11 +14,15 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui.fbclm;
+package com.smartstudio.fbclm.injection;
 
-/**
- * TODO Add a class header comment
- */
-public interface FbclmPresenter {
+import java.lang.annotation.Retention;
 
+import javax.inject.Qualifier;
+
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
+@Qualifier
+@Retention(RUNTIME)
+public @interface ForApplication {
 }

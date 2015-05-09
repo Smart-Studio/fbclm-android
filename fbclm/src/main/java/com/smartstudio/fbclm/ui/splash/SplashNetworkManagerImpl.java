@@ -14,18 +14,28 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui.fbclm;
+package com.smartstudio.fbclm.ui.splash;
 
 import javax.inject.Inject;
 
 /**
  * TODO Add a class header comment
  */
-public class FbclmPresenterImpl implements FbclmPresenter{
-    private FbclmView mFbclmView;
+public class SplashNetworkManagerImpl implements SplashNetworkManager {
+    private SplashNetworkListener mListener;
 
     @Inject
-    public FbclmPresenterImpl(FbclmView fbclmView){
-        mFbclmView = fbclmView;
+    public SplashNetworkManagerImpl(){
+
+    }
+
+    @Override
+    public void requestLeagues() {
+        mListener.onLeaguesLoaded();
+    }
+
+    @Override
+    public void setSplashNetworkListener(SplashNetworkListener listener) {
+        mListener = listener;
     }
 }

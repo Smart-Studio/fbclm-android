@@ -17,8 +17,9 @@
 package com.smartstudio.fbclm.app;
 
 import android.content.Context;
+import android.content.res.Resources;
 
-import javax.inject.Named;
+import com.smartstudio.fbclm.injection.ForApplication;
 
 import dagger.Component;
 
@@ -27,6 +28,8 @@ import dagger.Component;
  */
 @Component(modules = FbclmModule.class)
 public interface FbclmComponent {
-    @Named("Application")
+    @ForApplication
     Context provideContext();
+
+    Resources provideResources();
 }

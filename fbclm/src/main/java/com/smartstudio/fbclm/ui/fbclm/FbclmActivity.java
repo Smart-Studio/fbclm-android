@@ -18,6 +18,7 @@ package com.smartstudio.fbclm.ui.fbclm;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 
 import com.smartstudio.fbclm.R;
 import com.smartstudio.fbclm.app.FbclmApplication;
@@ -25,16 +26,12 @@ import com.smartstudio.fbclm.injection.DaggerFbclmActivityComponent;
 import com.smartstudio.fbclm.injection.FbclmActivityComponent;
 import com.smartstudio.fbclm.injection.FbclmActivityModule;
 
-import javax.inject.Inject;
-
 /**
  * TODO Add a class header comment
  */
-public class FbclmActivity extends FragmentActivity implements FbclmView {
+public class FbclmActivity extends AppCompatActivity {
     private FbclmActivityComponent mComponent;
 
-    @Inject
-    FbclmPresenter mPresenter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,7 +40,7 @@ public class FbclmActivity extends FragmentActivity implements FbclmView {
 
         mComponent = DaggerFbclmActivityComponent.builder()
                 .fbclmComponent(FbclmApplication.get(this).getComponent())
-                .fbclmActivityModule(new FbclmActivityModule(this, getSupportFragmentManager()))
+                .fbclmActivityModule(new FbclmActivityModule(getSupportFragmentManager()))
                 .build();
         mComponent.inject(this);
 
@@ -54,4 +51,5 @@ public class FbclmActivity extends FragmentActivity implements FbclmView {
         super.onDestroy();
         mComponent = null;
     }
+
 }

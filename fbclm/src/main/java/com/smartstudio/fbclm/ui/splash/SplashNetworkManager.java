@@ -16,18 +16,10 @@
 
 package com.smartstudio.fbclm.ui.splash;
 
-import javax.inject.Inject;
-
 /**
  * TODO Add a class header comment
  */
-public class SplashScreenPresenterImpl implements SplashScreenPresenter {
-    private SplashView splashView;
-
-    @Inject
-    public SplashScreenPresenterImpl(SplashView splashView){
-        this.splashView = splashView;
-    }
-
-
+public interface SplashNetworkManager {
+    void requestLeagues();
+    void setSplashNetworkListener(SplashNetworkListener listener);
 }

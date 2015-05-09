@@ -14,13 +14,11 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui.fbclm;
-
-import android.view.View;
+package com.smartstudio.fbclm.ui.splash;
 
 /**
  * TODO Add a class header comment
  */
-public interface FbclmView {
-    void init(View view);
+public interface SplashController {
+    void navigateTo();
 }
