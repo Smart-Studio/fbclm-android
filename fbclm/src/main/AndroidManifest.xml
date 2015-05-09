@@ -16,6 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ui.fbclm.FbclmActivity"/>
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="${fabricApiKey}" />

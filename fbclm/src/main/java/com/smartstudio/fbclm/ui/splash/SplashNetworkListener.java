@@ -19,5 +19,6 @@ package com.smartstudio.fbclm.ui.splash;
 /**
  * TODO Add a class header comment
  */
-public interface SplashScreenPresenter {
+public interface SplashNetworkListener {
+    void onLeaguesLoaded();
 }

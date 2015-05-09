@@ -16,9 +16,11 @@
 
 package com.smartstudio.fbclm.ui.splash;
 
+import com.smartstudio.fbclm.ui.fbclm.FbclmView;
+
 /**
  * TODO Add a class header comment
  */
-public interface SplashView {
-
+public interface SplashView extends FbclmView {
+    void startLoadingAnimation();
 }
