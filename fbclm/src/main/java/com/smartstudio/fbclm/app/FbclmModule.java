@@ -18,6 +18,9 @@ package com.smartstudio.fbclm.app;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.res.Resources;
+
+import com.smartstudio.fbclm.injection.ForApplication;
 
 import javax.inject.Named;
 
@@ -36,9 +39,13 @@ public class FbclmModule {
     }
 
     @Provides
-    @Named("Application")
+    @ForApplication
     public Context provideContext() {
         return application;
     }
 
+    @Provides
+    public Resources provideResources() {
+        return application.getResources();
+    }
 }

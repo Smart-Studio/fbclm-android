@@ -16,32 +16,29 @@
 
 package com.smartstudio.fbclm.ui.splash;
 
-import android.graphics.drawable.AnimationDrawable;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.widget.TextView;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.smartstudio.fbclm.R;
 import com.smartstudio.fbclm.app.FbclmApplication;
 import com.smartstudio.fbclm.injection.DaggerSplashScreenComponent;
 import com.smartstudio.fbclm.injection.SplashScreenComponent;
 import com.smartstudio.fbclm.injection.SplashScreenModule;
+import com.smartstudio.fbclm.ui.fbclm.FbclmActivity;
 
 import javax.inject.Inject;
-
-import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * TODO Add a class header comment
  */
-public class SplashScreenActivity extends FragmentActivity implements SplashView {
+public class SplashScreenActivity extends AppCompatActivity implements SplashController, SplashNetworkListener {
     private SplashScreenComponent mComponent;
-
-    @InjectView(R.id.splash_text_loading)
-    TextView mLoadingText;
     @Inject
-    SplashScreenPresenter mPresenter;
+    SplashView mSplashView;
+    @Inject
+    SplashNetworkManager mNetworkManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,10 +50,14 @@ public class SplashScreenActivity extends FragmentActivity implements SplashView
                 .splashScreenModule(new SplashScreenModule(this))
                 .build();
         mComponent.inject(this);
-        ButterKnife.inject(this);
 
-        startLoadingAnimation();
+        View view = getWindow().getDecorView().findViewById(android.R.id.content);
+        mSplashView.init(view);
+        mSplashView.startLoadingAnimation();
+        mNetworkManager.setSplashNetworkListener(this);
+        mNetworkManager.requestLeagues();
     }
+
 
     @Override
     public void onDestroy() {
@@ -64,13 +65,13 @@ public class SplashScreenActivity extends FragmentActivity implements SplashView
         mComponent = null;
     }
 
-    private void startLoadingAnimation() {
-        AnimationDrawable loadingAnimation = (AnimationDrawable) getResources()
-                .getDrawable(R.drawable.animated_ellipsis);
-        mLoadingText.setCompoundDrawablesWithIntrinsicBounds(null, null, loadingAnimation, null);
-        if (loadingAnimation != null) {
-            loadingAnimation.start();
-        }
+    @Override
+    public void navigateTo() {
+        startActivity(new Intent(SplashScreenActivity.this, FbclmActivity.class));
     }
 
+    @Override
+    public void onLeaguesLoaded() {
+
+    }
 }

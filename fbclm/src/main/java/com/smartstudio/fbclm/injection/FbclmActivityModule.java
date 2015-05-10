@@ -18,8 +18,6 @@ package com.smartstudio.fbclm.injection;
 
 import android.support.v4.app.FragmentManager;
 
-import com.smartstudio.fbclm.ui.fbclm.FbclmPresenter;
-import com.smartstudio.fbclm.ui.fbclm.FbclmPresenterImpl;
 import com.smartstudio.fbclm.ui.fbclm.FbclmView;
 
 import dagger.Module;
@@ -30,22 +28,10 @@ import dagger.Provides;
  */
 @Module
 public class FbclmActivityModule {
-    private FbclmView mFbclmView;
-    private FragmentManager mFragmentManager;
+    private final FragmentManager mFragmentManager;
 
-    public FbclmActivityModule(FbclmView fbclmView, FragmentManager fragmentManager) {
-        mFbclmView = fbclmView;
+    public FbclmActivityModule(FragmentManager fragmentManager) {
         mFragmentManager = fragmentManager;
-    }
-
-    @Provides
-    public FbclmView provideFbclmView() {
-        return mFbclmView;
-    }
-
-    @Provides
-    public FbclmPresenter provideFbclmPresenter(FbclmPresenterImpl fbclmPresenter) {
-        return fbclmPresenter;
     }
 
     @Provides

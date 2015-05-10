@@ -16,9 +16,11 @@
 
 package com.smartstudio.fbclm.injection;
 
-import com.smartstudio.fbclm.ui.splash.SplashScreenPresenter;
-import com.smartstudio.fbclm.ui.splash.SplashScreenPresenterImpl;
+import com.smartstudio.fbclm.ui.splash.SplashController;
+import com.smartstudio.fbclm.ui.splash.SplashNetworkManager;
+import com.smartstudio.fbclm.ui.splash.SplashNetworkManagerImpl;
 import com.smartstudio.fbclm.ui.splash.SplashView;
+import com.smartstudio.fbclm.ui.splash.SplashViewImpl;
 
 import dagger.Module;
 import dagger.Provides;
@@ -28,22 +30,24 @@ import dagger.Provides;
  */
 @Module
 public class SplashScreenModule {
+    private SplashController mController;
 
-    private SplashView splashView;
-
-    public SplashScreenModule(SplashView splashView) {
-        this.splashView = splashView;
+    public SplashScreenModule(SplashController controller) {
+        mController = controller;
     }
 
     @Provides
-    public SplashView provideSplashView() {
+    public SplashController provideController() {
+        return mController;
+    }
+
+    @Provides
+    public SplashView provideSplashView(SplashViewImpl splashView) {
         return splashView;
     }
 
     @Provides
-    public SplashScreenPresenter provideSplashScreenPresenter(SplashScreenPresenterImpl
-                                                                      splashScreenPresenter) {
-        return splashScreenPresenter;
+    public SplashNetworkManager provideNetworkManager(SplashNetworkManagerImpl networkManager) {
+        return networkManager;
     }
-
 }
