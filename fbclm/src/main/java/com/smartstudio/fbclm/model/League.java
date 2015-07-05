@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smart Studio.
+ * Copyright 2015 Smart Studio
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,28 +14,22 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.injection;
+package com.smartstudio.fbclm.model;
 
-import android.support.v4.app.FragmentManager;
 
-import com.smartstudio.fbclm.ui.fbclm.FbclmView;
+public class League {
+    private int id;
+    private String name;
 
-import dagger.Module;
-import dagger.Provides;
+    public League() {
 
-/**
- * TODO Add a class header comment
- */
-@Module
-public class FbclmActivityModule {
-    private final FragmentManager mFragmentManager;
-
-    public FbclmActivityModule(FragmentManager fragmentManager) {
-        mFragmentManager = fragmentManager;
     }
 
-    @Provides
-    public FragmentManager provideFragmentManager() {
-        return mFragmentManager;
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
     }
 }

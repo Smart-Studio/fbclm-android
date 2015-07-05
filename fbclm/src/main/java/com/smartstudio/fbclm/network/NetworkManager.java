@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smart Studio.
+ * Copyright 2015 Smart Studio
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,14 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.injection;
+package com.smartstudio.fbclm.network;
 
-import java.lang.annotation.Retention;
+import com.smartstudio.fbclm.model.League;
 
-import javax.inject.Qualifier;
+import java.util.List;
 
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-@Qualifier
-@Retention(RUNTIME)
-public @interface ForApplication {
+public interface NetworkManager {
+
+    List<League> requestLeagues(int seasonId, boolean forceCache);
 }

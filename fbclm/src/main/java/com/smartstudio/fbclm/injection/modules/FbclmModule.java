@@ -14,38 +14,48 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.app;
+package com.smartstudio.fbclm.injection.modules;
 
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Resources;
 
-import com.smartstudio.fbclm.injection.ForApplication;
-
-import javax.inject.Named;
+import com.smartstudio.fbclm.BuildConfig;
+import com.smartstudio.fbclm.injection.qualifiers.ForApplication;
+import com.smartstudio.fbclm.injection.scopes.PerApplication;
 
 import dagger.Module;
 import dagger.Provides;
+import timber.log.Timber;
 
 /**
  * TODO Add a class header comment
  */
-@Module
+@Module(includes = NetworkModule.class)
 public class FbclmModule {
-    private Application application;
+    private final Application mApplication;
 
     public FbclmModule(Application application) {
-        this.application = application;
+        mApplication = application;
     }
 
     @Provides
     @ForApplication
-    public Context provideContext() {
-        return application;
+    Context provideContext() {
+        return mApplication;
     }
 
     @Provides
-    public Resources provideResources() {
-        return application.getResources();
+    Resources provideResources() {
+        return mApplication.getResources();
+    }
+
+    @Provides
+    Timber.Tree provideTimberTree() {
+        if (BuildConfig.DEBUG) {
+            return new Timber.DebugTree();
+        }
+
+        return new Timber.DebugTree();
     }
 }

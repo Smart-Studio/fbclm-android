@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smart Studio.
+ * Copyright 2015 Smart Studio
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,28 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.app;
+package com.smartstudio.fbclm;
 
 import android.app.Application;
 import android.content.Context;
 
 import com.crashlytics.android.Crashlytics;
+import com.smartstudio.fbclm.injection.components.DaggerFbclmComponent;
+import com.smartstudio.fbclm.injection.components.FbclmComponent;
+import com.smartstudio.fbclm.injection.modules.FbclmModule;
+
+import javax.inject.Inject;
 
 import io.fabric.sdk.android.Fabric;
+import timber.log.Timber;
 
 /**
- * TODO Add a class header comment
+ * TODO Add javadoc documentation
  */
-public class FbclmApplication extends Application {
+public abstract class CommonApplication extends Application {
     private FbclmComponent component;
+    @Inject
+    Timber.Tree mTimberTree;
 
     @Override
     public void onCreate() {
@@ -36,6 +44,7 @@ public class FbclmApplication extends Application {
         component = DaggerFbclmComponent.builder()
                 .fbclmModule(new FbclmModule(this))
                 .build();
+        component.injectApplication(this);
     }
 
     public FbclmComponent getComponent() {

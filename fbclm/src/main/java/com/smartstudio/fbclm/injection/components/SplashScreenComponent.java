@@ -14,26 +14,22 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.injection;
+package com.smartstudio.fbclm.injection.components;
 
-import com.smartstudio.fbclm.app.FbclmComponent;
-import com.smartstudio.fbclm.ui.splash.SplashNetworkManager;
+import com.smartstudio.fbclm.injection.modules.SplashScreenModule;
+import com.smartstudio.fbclm.injection.scopes.PerActivity;
 import com.smartstudio.fbclm.ui.splash.SplashScreenActivity;
-import com.smartstudio.fbclm.ui.splash.SplashView;
 
-import dagger.Component;
+import dagger.Subcomponent;
 
 /**
  * TODO Add a class header comment
  */
-@Component(
-        dependencies = {FbclmComponent.class},
+
+@PerActivity
+@Subcomponent(
         modules = SplashScreenModule.class
 )
 public interface SplashScreenComponent {
     void inject(SplashScreenActivity activity);
-
-    SplashView provideSplashView();
-
-    SplashNetworkManager provideSplashNetwork();
 }

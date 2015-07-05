@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smart Studio.
+ * Copyright 2015 Smart Studio
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,16 +14,15 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui.splash;
+package com.smartstudio.fbclm.controller;
 
-import android.support.annotation.UiThread;
+import com.smartstudio.fbclm.model.League;
 
-import com.smartstudio.fbclm.ui.FbclmView;
+import java.util.List;
 
 /**
- * TODO Add a class header comment
+ * TODO Add javadoc documentation
  */
-public interface SplashView extends FbclmView {
-    @UiThread
-    void startLoadingAnimation();
+public interface SplashController {
+    void onLeaguesLoaded(List<League> leagues);
 }

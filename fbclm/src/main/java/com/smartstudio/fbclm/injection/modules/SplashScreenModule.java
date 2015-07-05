@@ -14,11 +14,13 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.injection;
+package com.smartstudio.fbclm.injection.modules;
 
-import com.smartstudio.fbclm.ui.splash.SplashController;
-import com.smartstudio.fbclm.ui.splash.SplashNetworkManager;
-import com.smartstudio.fbclm.ui.splash.SplashNetworkManagerImpl;
+import com.smartstudio.fbclm.controller.SplashController;
+import com.smartstudio.fbclm.injection.scopes.PerActivity;
+import com.smartstudio.fbclm.network.splash.SplashNetworkManager;
+import com.smartstudio.fbclm.network.splash.SplashNetworkManagerImpl;
+import com.smartstudio.fbclm.ui.FbclmView;
 import com.smartstudio.fbclm.ui.splash.SplashView;
 import com.smartstudio.fbclm.ui.splash.SplashViewImpl;
 
@@ -30,24 +32,30 @@ import dagger.Provides;
  */
 @Module
 public class SplashScreenModule {
-    private SplashController mController;
+    private final SplashController mController;
 
     public SplashScreenModule(SplashController controller) {
         mController = controller;
     }
 
     @Provides
-    public SplashController provideController() {
-        return mController;
-    }
-
-    @Provides
-    public SplashView provideSplashView(SplashViewImpl splashView) {
+    @PerActivity
+    SplashView provideView(SplashViewImpl splashView) {
         return splashView;
     }
 
     @Provides
-    public SplashNetworkManager provideNetworkManager(SplashNetworkManagerImpl networkManager) {
+    FbclmView provideFbclmView(SplashView view) {
+        return view;
+    }
+
+    @Provides
+    SplashNetworkManager provideNetworkManager(SplashNetworkManagerImpl networkManager) {
         return networkManager;
+    }
+
+    @Provides
+    SplashController provideController() {
+        return mController;
     }
 }

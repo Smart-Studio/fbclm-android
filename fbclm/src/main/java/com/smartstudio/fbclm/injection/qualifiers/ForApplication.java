@@ -14,24 +14,15 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.injection;
+package com.smartstudio.fbclm.injection.qualifiers;
 
-import android.support.v4.app.FragmentManager;
+import java.lang.annotation.Retention;
 
-import com.smartstudio.fbclm.app.FbclmComponent;
-import com.smartstudio.fbclm.ui.fbclm.FbclmActivity;
+import javax.inject.Qualifier;
 
-import dagger.Component;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-/**
- * TODO Add a class header comment
- */
-@Component(
-        dependencies = {FbclmComponent.class},
-        modules = FbclmActivityModule.class
-)
-public interface FbclmActivityComponent {
-    void inject(FbclmActivity activity);
-
-    FragmentManager provideFragmentManager();
+@Qualifier
+@Retention(RUNTIME)
+public @interface ForApplication {
 }

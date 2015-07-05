@@ -14,16 +14,26 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui.splash;
 
-import android.support.annotation.UiThread;
+package com.smartstudio.fbclm;
 
-import com.smartstudio.fbclm.ui.FbclmView;
+import com.facebook.stetho.Stetho;
 
 /**
  * TODO Add a class header comment
  */
-public interface SplashView extends FbclmView {
-    @UiThread
-    void startLoadingAnimation();
+public class FbclmApplication extends CommonApplication {
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        Stetho.initialize(
+                Stetho.newInitializerBuilder(this)
+                        .enableDumpapp(
+                                Stetho.defaultDumperPluginsProvider(this))
+                        .enableWebKitInspector(
+                                Stetho.defaultInspectorModulesProvider(this))
+                        .build());
+    }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smart Studio.
+ * Copyright 2015 Smart Studio
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,28 +14,18 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui.splash;
+package com.smartstudio.fbclm.ui;
 
-import javax.inject.Inject;
+import android.view.View;
+
+import butterknife.ButterKnife;
 
 /**
- * TODO Add a class header comment
+ * TODO Add javadoc documentation
  */
-public class SplashNetworkManagerImpl implements SplashNetworkManager {
-    private SplashNetworkListener mListener;
-
-    @Inject
-    public SplashNetworkManagerImpl(){
-
-    }
-
+public abstract class BaseViewImpl implements FbclmView {
     @Override
-    public void requestLeagues() {
-        mListener.onLeaguesLoaded();
-    }
-
-    @Override
-    public void setSplashNetworkListener(SplashNetworkListener listener) {
-        mListener = listener;
+    public void init(View view) {
+        ButterKnife.inject(this, view);
     }
 }
