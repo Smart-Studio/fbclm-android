@@ -16,28 +16,14 @@
 
 package com.smartstudio.fbclm.network;
 
-import com.smartstudio.fbclm.injection.scopes.PerApplication;
 import com.squareup.okhttp.Cache;
-import com.squareup.okhttp.OkHttpClient;
-
-import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
 /**
- * Created by juanyanezgc on 10/05/15.
+ * TODO Add javadoc documentation
  */
-@PerApplication
-public class FbclmOkHttpClient extends OkHttpClient {
-    /**
-     * Connection timeout in seconds
-     */
-    private static final int CONNECTION_TIMEOUT = 10;
-    /**
-     * Read timeout in seconds
-     */
-    private static final int READ_TIMEOUT = 20;
-
+public class FbclmOkHttpClient extends CommonOkHttpClient {
     /**
      * Creates an instance of FbclmOkHttpClient
      *
@@ -45,12 +31,6 @@ public class FbclmOkHttpClient extends OkHttpClient {
      **/
     @Inject
     public FbclmOkHttpClient(Cache cache) {
-        super();
-        setCache(cache);
-        setConnectTimeout(CONNECTION_TIMEOUT, TimeUnit.SECONDS);
-        setReadTimeout(READ_TIMEOUT, TimeUnit.SECONDS);
-        setFollowRedirects(false);
-        setFollowSslRedirects(false);
+        super(cache);
     }
-
 }

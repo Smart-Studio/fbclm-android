@@ -18,7 +18,6 @@ package com.smartstudio.fbclm.injection.modules;
 
 import android.content.Context;
 
-import com.facebook.stetho.okhttp.StethoInterceptor;
 import com.smartstudio.fbclm.BuildConfig;
 import com.smartstudio.fbclm.injection.qualifiers.ForApplication;
 import com.smartstudio.fbclm.network.FbclmOkHttpClient;
@@ -41,7 +40,6 @@ public class NetworkModule {
 
     @Provides
     OkClient provideOkClient(FbclmOkHttpClient okHttpClient) {
-        okHttpClient.networkInterceptors().add(new StethoInterceptor());
         return new OkClient(okHttpClient);
     }
 
