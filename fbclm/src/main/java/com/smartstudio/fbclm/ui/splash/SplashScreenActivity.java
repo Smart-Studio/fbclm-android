@@ -16,15 +16,17 @@
 
 package com.smartstudio.fbclm.ui.splash;
 
+import android.content.Intent;
 import android.os.Bundle;
 
-import com.smartstudio.fbclm.BaseActivity;
+import com.smartstudio.fbclm.DataActivity;
 import com.smartstudio.fbclm.FbclmApplication;
 import com.smartstudio.fbclm.R;
 import com.smartstudio.fbclm.controller.SplashController;
 import com.smartstudio.fbclm.injection.components.SplashScreenComponent;
 import com.smartstudio.fbclm.injection.modules.SplashScreenModule;
 import com.smartstudio.fbclm.model.League;
+import com.smartstudio.fbclm.ui.MainActivity;
 
 import java.util.List;
 
@@ -33,7 +35,7 @@ import javax.inject.Inject;
 /**
  *
  */
-public class SplashScreenActivity extends BaseActivity implements SplashController {
+public class SplashScreenActivity extends DataActivity<List<League>> implements SplashController {
     private SplashScreenComponent mComponent;
     @Inject
     SplashView mSplashView;
@@ -67,6 +69,14 @@ public class SplashScreenActivity extends BaseActivity implements SplashControll
 
     @Override
     public void onDataLoaded(List<League> data) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        overridePendingTransition(0, 0);
+        finish();
+    }
+
+    @Override
+    public void onDataError() {
 
     }
 }

@@ -14,30 +14,12 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm;
+package com.smartstudio.fbclm.ui;
 
-import com.smartstudio.fbclm.controller.Controller;
-import com.smartstudio.fbclm.network.splash.NetworkManager;
-
-import javax.inject.Inject;
+import android.app.Activity;
 
 /**
- * TODO Add javadoc documentation
+ * TODO Add a class header comment
  */
-public abstract class DataActivity<T> extends BaseActivity implements Controller<T> {
-
-    @Inject
-    NetworkManager mNetworkManager;
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        mNetworkManager.loadData();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mNetworkManager.cancelRequest();
-    }
+public class MainActivity extends Activity {
 }

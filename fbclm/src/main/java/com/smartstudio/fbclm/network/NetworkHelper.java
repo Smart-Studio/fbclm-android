@@ -22,6 +22,5 @@ import java.util.List;
 
 
 public interface NetworkHelper {
-
     List<League> requestLeagues(int seasonId, boolean forceCache);
 }

@@ -16,28 +16,20 @@
 
 package com.smartstudio.fbclm;
 
-import com.smartstudio.fbclm.controller.Controller;
-import com.smartstudio.fbclm.network.splash.NetworkManager;
+import com.smartstudio.fbclm.ui.FbclmView;
 
 import javax.inject.Inject;
 
 /**
- * TODO Add javadoc documentation
+ * TODO Add a class header comment
  */
-public abstract class DataActivity<T> extends BaseActivity implements Controller<T> {
+public abstract class DataViewActivity<T> extends DataActivity<T> {
 
     @Inject
-    NetworkManager mNetworkManager;
+    FbclmView<T> mView;
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        mNetworkManager.loadData();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mNetworkManager.cancelRequest();
+    public void onDataLoaded(T data) {
+        mView.showData(data);
     }
 }

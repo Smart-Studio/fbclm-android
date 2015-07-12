@@ -21,4 +21,6 @@ package com.smartstudio.fbclm.controller;
  */
 public interface Controller<T> {
     void onDataLoaded(T data);
+
+    void onDataError();
 }

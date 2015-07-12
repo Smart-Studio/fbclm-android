@@ -42,7 +42,7 @@ public abstract class NetworkManagerImpl<T> implements NetworkManager {
     public void loadData() {
         createDataObservable(false)
                 .onErrorResumeNext(createDataObservable(true))
-                .subscribe(mController::onDataLoaded, throwable -> Timber.e(throwable, throwable.getMessage()));
+                .subscribe(mController::onDataLoaded, this::onError);
     }
 
     @Override
@@ -54,12 +54,22 @@ public abstract class NetworkManagerImpl<T> implements NetworkManager {
     }
 
     private Observable<T> createDataObservable(boolean forceCache) {
-        Observable<T> leaguesObservable = Observable.create(subscriber ->
-                requestData(forceCache));
-        return leaguesObservable
+        return Observable.create(onSubscribe(forceCache))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
+    private Observable.OnSubscribe<T> onSubscribe(boolean forceCache) {
+        return subscriber -> {
+            subscriber.onNext(NetworkManagerImpl.this.requestData(forceCache));
+            subscriber.onCompleted();
+        };
+    }
+
     protected abstract T requestData(boolean forceCache);
+
+    private void onError(Throwable throwable) {
+        Timber.e(throwable, throwable.getMessage());
+        mController.onDataError();
+    }
 }
