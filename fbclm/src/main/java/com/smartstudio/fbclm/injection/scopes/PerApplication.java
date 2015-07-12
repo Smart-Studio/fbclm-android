@@ -23,7 +23,7 @@ import javax.inject.Scope;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * TODO Add javadoc documentation
+ * Dagger application scope
  */
 @Scope
 @Retention(RUNTIME)

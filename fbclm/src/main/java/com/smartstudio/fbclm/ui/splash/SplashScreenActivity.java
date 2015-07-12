@@ -25,7 +25,6 @@ import com.smartstudio.fbclm.controller.SplashController;
 import com.smartstudio.fbclm.injection.components.SplashScreenComponent;
 import com.smartstudio.fbclm.injection.modules.SplashScreenModule;
 import com.smartstudio.fbclm.model.League;
-import com.smartstudio.fbclm.network.splash.SplashNetworkManager;
 
 import java.util.List;
 
@@ -38,8 +37,6 @@ public class SplashScreenActivity extends BaseActivity implements SplashControll
     private SplashScreenComponent mComponent;
     @Inject
     SplashView mSplashView;
-    @Inject
-    SplashNetworkManager networkManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,17 +57,6 @@ public class SplashScreenActivity extends BaseActivity implements SplashControll
         return R.layout.activity_splash;
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        networkManager.requestLeagues();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        networkManager.cancelRequest();
-    }
 
     @Override
     public void onDestroy() {
@@ -78,10 +64,9 @@ public class SplashScreenActivity extends BaseActivity implements SplashControll
         mComponent = null;
     }
 
-    public void onLeaguesLoaded(List<League> leagues) {
-        /*finish();
-        Intent intent = new Intent(this, FbclmActivity.class);
-        startActivity(intent);
-        overridePendingTransition(0, 0);*/
+
+    @Override
+    public void onDataLoaded(List<League> data) {
+
     }
 }

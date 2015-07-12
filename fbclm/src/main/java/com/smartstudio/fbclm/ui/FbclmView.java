@@ -16,11 +16,9 @@
 
 package com.smartstudio.fbclm.ui;
 
-import android.view.View;
-
 /**
- * TODO Add a class header comment
+ * Base view to be extend by all the views in the project
  */
-public interface FbclmView {
-    void init(View view);
+public interface FbclmView<T> extends BaseView {
+    void showData(T data);
 }

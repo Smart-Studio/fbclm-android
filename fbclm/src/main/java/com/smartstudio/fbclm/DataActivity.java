@@ -14,28 +14,39 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.network.splash;
+package com.smartstudio.fbclm;
 
-import com.smartstudio.fbclm.controller.SplashController;
-import com.smartstudio.fbclm.model.League;
-import com.smartstudio.fbclm.network.NetworkHelper;
-
-import java.util.List;
+import com.smartstudio.fbclm.controller.Controller;
+import com.smartstudio.fbclm.network.splash.NetworkManager;
+import com.smartstudio.fbclm.ui.FbclmView;
 
 import javax.inject.Inject;
 
 /**
  * TODO Add javadoc documentation
  */
-public class SplashNetworkManagerImpl extends NetworkManagerImpl<List<League>> {
+public abstract class DataActivity<T> extends BaseActivity implements Controller<T> {
 
     @Inject
-    public SplashNetworkManagerImpl(SplashController controller, NetworkHelper networkHelper) {
-        super(controller, networkHelper);
+    FbclmView<T> mView;
+    @Inject
+    NetworkManager mNetworkManager;
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mNetworkManager.loadData();
     }
 
     @Override
-    protected List<League> requestData(boolean forceCache) {
-        return mNetworkHelper.requestLeagues(104, forceCache);
+    protected void onPause() {
+        super.onPause();
+        mNetworkManager.cancelRequest();
+    }
+
+    @Override
+    public void onDataLoaded(T data) {
+        mView.showData(data);
     }
 }

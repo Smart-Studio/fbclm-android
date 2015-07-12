@@ -18,12 +18,16 @@ package com.smartstudio.fbclm.ui.splash;
 
 import android.support.annotation.UiThread;
 
-import com.smartstudio.fbclm.ui.FbclmView;
+import com.smartstudio.fbclm.ui.BaseView;
 
 /**
  * TODO Add a class header comment
  */
-public interface SplashView extends FbclmView {
+public interface SplashView extends BaseView {
+
+    /**
+     * Starts loading animation
+     **/
     @UiThread
     void startLoadingAnimation();
 }

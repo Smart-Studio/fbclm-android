@@ -23,7 +23,8 @@ import com.squareup.okhttp.OkHttpClient;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by juanyanezgc on 10/05/15.
+ * Common custom OkHttpClient implementation. Implemented like this to inject the Stetho library only
+ * on debug mode
  */
 @PerApplication
 public abstract class CommonOkHttpClient extends OkHttpClient {
@@ -37,7 +38,7 @@ public abstract class CommonOkHttpClient extends OkHttpClient {
     private static final int READ_TIMEOUT = 20;
 
     /**
-     * Creates an instance of FbclmOkHttpClient
+     * Creates an instance of CommonOkHttpClient
      *
      * @param cache Cache used in the OKHttpClient
      **/

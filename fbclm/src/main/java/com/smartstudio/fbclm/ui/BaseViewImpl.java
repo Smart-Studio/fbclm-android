@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
 /**
  * TODO Add javadoc documentation
  */
-public abstract class BaseViewImpl implements FbclmView {
+public abstract class BaseViewImpl implements BaseView {
     @Override
     public void init(View view) {
         ButterKnife.inject(this, view);

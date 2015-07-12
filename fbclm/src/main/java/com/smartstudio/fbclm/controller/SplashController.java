@@ -23,6 +23,5 @@ import java.util.List;
 /**
  * TODO Add javadoc documentation
  */
-public interface SplashController {
-    void onLeaguesLoaded(List<League> leagues);
+public interface SplashController extends Controller<List<League>> {
 }

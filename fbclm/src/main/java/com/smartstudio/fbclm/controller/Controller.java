@@ -14,13 +14,11 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.network.splash;
+package com.smartstudio.fbclm.controller;
 
 /**
  * TODO Add javadoc documentation
  */
-public interface SplashNetworkManager {
-    void requestLeagues();
-
-    void cancelRequest();
+public interface Controller<T> {
+    void onDataLoaded(T data);
 }

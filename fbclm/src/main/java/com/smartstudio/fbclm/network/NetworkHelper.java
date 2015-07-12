@@ -14,24 +14,14 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.model;
+package com.smartstudio.fbclm.network;
 
-/**
- * Represents a league
- **/
-public class League {
-    private int id;
-    private String name;
+import com.smartstudio.fbclm.model.League;
 
-    public League() {
+import java.util.List;
 
-    }
 
-    public int getId() {
-        return id;
-    }
+public interface NetworkHelper {
 
-    public String getName() {
-        return name;
-    }
+    List<League> requestLeagues(int seasonId, boolean forceCache);
 }

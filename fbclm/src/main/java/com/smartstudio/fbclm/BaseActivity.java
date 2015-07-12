@@ -21,16 +21,19 @@ import android.support.annotation.CallSuper;
 import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
 
-import com.smartstudio.fbclm.ui.FbclmView;
+import com.smartstudio.fbclm.ui.BaseView;
 
 import javax.inject.Inject;
 
 /**
- * TODO Add javadoc documentation
+ * Base activity that initialise the injected view and set the corresponding layout resource
  */
 public abstract class BaseActivity extends AppCompatActivity {
+    /**
+     * Injected base view
+     **/
     @Inject
-    FbclmView mView;
+    BaseView mView;
 
     @CallSuper
     @Override
@@ -41,8 +44,18 @@ public abstract class BaseActivity extends AppCompatActivity {
         mView.init(findViewById(android.R.id.content));
     }
 
+    /**
+     * Initialise the corresponding component
+     **/
     protected abstract void initComponent();
 
+    /**
+     * Gets the layout resource id to be set in the activity
+     *
+     * @return Layout resource id to be set in the activity
+     **/
     @LayoutRes
     protected abstract int getLayoutResourceId();
+
+
 }

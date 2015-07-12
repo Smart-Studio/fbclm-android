@@ -16,7 +16,7 @@ import retrofit.http.Query;
  * Created by juanyanezgc on 10/05/15.
  */
 @PerApplication
-public class RetrofitNetworkManager implements NetworkManager {
+public class RetrofitNetworkHelper implements NetworkHelper {
     private interface RestApi {
         @GET("/leagues")
         List<League> leagues(@Query("season") int seasonId);
@@ -29,7 +29,7 @@ public class RetrofitNetworkManager implements NetworkManager {
     private RestApi mRestApi;
 
     @Inject
-    public RetrofitNetworkManager(RestAdapter.Builder restBuilder) {
+    public RetrofitNetworkHelper(RestAdapter.Builder restBuilder) {
         mRestApi = restBuilder
                 .build().create(RestApi.class);
     }

@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.network;
+package com.smartstudio.fbclm.network.splash;
 
-import com.smartstudio.fbclm.model.League;
-
-import java.util.List;
-
-
+/**
+ * TODO Add javadoc documentation
+ */
 public interface NetworkManager {
+    void loadData();
 
-    List<League> requestLeagues(int seasonId, boolean forceCache);
+    void cancelRequest();
 }

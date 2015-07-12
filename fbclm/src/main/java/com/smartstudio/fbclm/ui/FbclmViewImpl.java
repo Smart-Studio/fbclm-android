@@ -14,24 +14,10 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.model;
+package com.smartstudio.fbclm.ui;
 
 /**
- * Represents a league
- **/
-public class League {
-    private int id;
-    private String name;
-
-    public League() {
-
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
+ * TODO Add javadoc documentation
+ */
+public abstract class FbclmViewImpl<T> implements FbclmView<T> {
 }

@@ -51,5 +51,4 @@ public class SplashViewImpl extends BaseViewImpl implements SplashView {
             loadingAnimation.start();
         }
     }
-
 }

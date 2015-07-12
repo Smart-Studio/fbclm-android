@@ -14,24 +14,18 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.model;
+package com.smartstudio.fbclm.ui;
+
+import android.view.View;
 
 /**
- * Represents a league
- **/
-public class League {
-    private int id;
-    private String name;
-
-    public League() {
-
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
+ * TODO Add javadoc documentation
+ */
+public interface BaseView {
+    /**
+     * Initialise the view
+     *
+     * @param view View to be initialised
+     **/
+    void init(View view);
 }

@@ -22,14 +22,13 @@ import android.content.res.Resources;
 
 import com.smartstudio.fbclm.BuildConfig;
 import com.smartstudio.fbclm.injection.qualifiers.ForApplication;
-import com.smartstudio.fbclm.injection.scopes.PerApplication;
 
 import dagger.Module;
 import dagger.Provides;
 import timber.log.Timber;
 
 /**
- * TODO Add a class header comment
+ * Base application module providing all the common dependencies through the whole application
  */
 @Module(includes = NetworkModule.class)
 public class FbclmModule {
@@ -39,17 +38,32 @@ public class FbclmModule {
         mApplication = application;
     }
 
+    /**
+     * Provides the application context
+     *
+     * @return Application context
+     **/
     @Provides
     @ForApplication
     Context provideContext() {
         return mApplication;
     }
 
+    /**
+     * Provides the application resources instance
+     *
+     * @return Resources instance of the application
+     **/
     @Provides
     Resources provideResources() {
         return mApplication.getResources();
     }
 
+    /**
+     * Provides a Timber tree to be used for logging by the application
+     *
+     * @return Timber tree to be used for logging
+     **/
     @Provides
     Timber.Tree provideTimberTree() {
         if (BuildConfig.DEBUG) {
