@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smart Studio.
+ * Copyright 2015 Smart Studio
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,18 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui.splash;
+package com.smartstudio.fbclm.ui;
 
-import android.support.annotation.UiThread;
+import android.view.View;
 
-import com.smartstudio.fbclm.ui.BaseView;
+import butterknife.ButterKnife;
 
 /**
- * TODO Add a class header comment
+ * TODO Add javadoc documentation
  */
-public interface SplashView extends BaseView {
-
-    /**
-     * Starts loading animation
-     **/
-    @UiThread
-    void startLoadingAnimation();
+public abstract class BaseViewImpl implements BaseView {
+    @Override
+    public void init(View view) {
+        ButterKnife.inject(this, view);
+    }
 }

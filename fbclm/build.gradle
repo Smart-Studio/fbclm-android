@@ -50,6 +50,7 @@ android {
                 fabricApiKey: fabric_api_key
         ]
 
+        buildConfigField "String", "ENDPOINT", "\"${server_endpoint}\""
 
         ext.betaDistributionGroupAliasesFilePath = fabric_testers_file
 
@@ -89,7 +90,7 @@ android {
             applicationIdSuffix '.debug'
             versionNameSuffix " ${gitSha()} ${buildTime()}"
             minifyEnabled false
-            testCoverageEnabled true
+            testCoverageEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -114,16 +115,18 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:22.1.1'
-    compile 'com.android.support:support-annotations:20.0.0'
+    debugCompile 'com.facebook.stetho:stetho:1.1.1'
+    debugCompile 'com.facebook.stetho:stetho-okhttp:1.1.1'
+    compile 'com.android.support:appcompat-v7:22.2.0'
+    compile 'com.android.support:support-annotations:22.2.0'
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.squareup.okhttp:okhttp:2.3.0'
     compile 'com.jakewharton:butterknife:6.1.0'
-    compile 'com.google.dagger:dagger:2.0'
-    apt 'com.google.dagger:dagger-compiler:2.0'
-    compile 'de.greenrobot:eventbus:2.4.0'
-    compile 'io.reactivex:rxjava:1.0.9'
+    compile 'com.google.dagger:dagger:2.0.1'
+    apt 'com.google.dagger:dagger-compiler:2.0.1'
+    compile 'com.jakewharton.timber:timber:3.1.0'
+    compile 'io.reactivex:rxjava:1.0.12'
     compile 'io.reactivex:rxandroid:0.24.0'
     compile('com.crashlytics.sdk.android:crashlytics:2.2.3@aar') {
         transitive = true;

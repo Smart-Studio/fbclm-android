@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smart Studio.
+ * Copyright 2015 Smart Studio
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,25 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui.splash;
+package com.smartstudio.fbclm.network;
 
-import android.support.annotation.UiThread;
+import com.facebook.stetho.okhttp.StethoInterceptor;
+import com.squareup.okhttp.Cache;
 
-import com.smartstudio.fbclm.ui.BaseView;
+import javax.inject.Inject;
 
 /**
- * TODO Add a class header comment
+ * TODO Add javadoc documentation
  */
-public interface SplashView extends BaseView {
-
+public class FbclmOkHttpClient extends CommonOkHttpClient {
     /**
-     * Starts loading animation
+     * Creates an instance of FbclmOkHttpClient
+     *
+     * @param cache Cache used in the OKHttpClient
      **/
-    @UiThread
-    void startLoadingAnimation();
+    @Inject
+    public FbclmOkHttpClient(Cache cache) {
+        super(cache);
+        networkInterceptors().add(new StethoInterceptor());
+    }
 }

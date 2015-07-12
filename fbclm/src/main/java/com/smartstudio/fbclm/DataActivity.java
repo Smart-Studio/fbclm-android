@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smart Studio.
+ * Copyright 2015 Smart Studio
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,28 +14,30 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui.splash;
+package com.smartstudio.fbclm;
+
+import com.smartstudio.fbclm.controller.Controller;
+import com.smartstudio.fbclm.network.splash.NetworkManager;
 
 import javax.inject.Inject;
 
 /**
- * TODO Add a class header comment
+ * TODO Add javadoc documentation
  */
-public class SplashNetworkManagerImpl implements SplashNetworkManager {
-    private SplashNetworkListener mListener;
+public abstract class DataActivity<T> extends BaseActivity implements Controller<T> {
 
     @Inject
-    public SplashNetworkManagerImpl(){
+    NetworkManager mNetworkManager;
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mNetworkManager.loadData();
     }
 
     @Override
-    public void requestLeagues() {
-        mListener.onLeaguesLoaded();
-    }
-
-    @Override
-    public void setSplashNetworkListener(SplashNetworkListener listener) {
-        mListener = listener;
+    protected void onPause() {
+        super.onPause();
+        mNetworkManager.cancelRequest();
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smart Studio.
+ * Copyright 2015 Smart Studio
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,24 +14,18 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.injection;
+package com.smartstudio.fbclm.ui;
 
-import android.support.v4.app.FragmentManager;
-
-import com.smartstudio.fbclm.app.FbclmComponent;
-import com.smartstudio.fbclm.ui.fbclm.FbclmActivity;
-
-import dagger.Component;
+import android.view.View;
 
 /**
- * TODO Add a class header comment
+ * TODO Add javadoc documentation
  */
-@Component(
-        dependencies = {FbclmComponent.class},
-        modules = FbclmActivityModule.class
-)
-public interface FbclmActivityComponent {
-    void inject(FbclmActivity activity);
-
-    FragmentManager provideFragmentManager();
+public interface BaseView {
+    /**
+     * Initialise the view
+     *
+     * @param view View to be initialised
+     **/
+    void init(View view);
 }

@@ -18,44 +18,45 @@ package com.smartstudio.fbclm.ui.splash;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 
+import com.smartstudio.fbclm.DataActivity;
+import com.smartstudio.fbclm.FbclmApplication;
 import com.smartstudio.fbclm.R;
-import com.smartstudio.fbclm.app.FbclmApplication;
-import com.smartstudio.fbclm.injection.DaggerSplashScreenComponent;
-import com.smartstudio.fbclm.injection.SplashScreenComponent;
-import com.smartstudio.fbclm.injection.SplashScreenModule;
-import com.smartstudio.fbclm.ui.fbclm.FbclmActivity;
+import com.smartstudio.fbclm.controller.SplashController;
+import com.smartstudio.fbclm.injection.components.SplashScreenComponent;
+import com.smartstudio.fbclm.injection.modules.SplashScreenModule;
+import com.smartstudio.fbclm.model.League;
+import com.smartstudio.fbclm.ui.MainActivity;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
 /**
- * TODO Add a class header comment
+ *
  */
-public class SplashScreenActivity extends AppCompatActivity implements SplashController, SplashNetworkListener {
+public class SplashScreenActivity extends DataActivity<List<League>> implements SplashController {
     private SplashScreenComponent mComponent;
     @Inject
     SplashView mSplashView;
-    @Inject
-    SplashNetworkManager mNetworkManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
-
-        mComponent = DaggerSplashScreenComponent.builder()
-                .fbclmComponent(FbclmApplication.get(this).getComponent())
-                .splashScreenModule(new SplashScreenModule(this))
-                .build();
-        mComponent.inject(this);
-
-        View view = getWindow().getDecorView().findViewById(android.R.id.content);
-        mSplashView.init(view);
         mSplashView.startLoadingAnimation();
-        mNetworkManager.setSplashNetworkListener(this);
-        mNetworkManager.requestLeagues();
+    }
+
+    @Override
+    protected void initComponent() {
+        mComponent = FbclmApplication.get(this)
+                .getComponent()
+                .plus(new SplashScreenModule(this));
+        mComponent.inject(this);
+    }
+
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.activity_splash;
     }
 
 
@@ -65,13 +66,17 @@ public class SplashScreenActivity extends AppCompatActivity implements SplashCon
         mComponent = null;
     }
 
+
     @Override
-    public void navigateTo() {
-        startActivity(new Intent(SplashScreenActivity.this, FbclmActivity.class));
+    public void onDataLoaded(List<League> data) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        overridePendingTransition(0, 0);
+        finish();
     }
 
     @Override
-    public void onLeaguesLoaded() {
+    public void onDataError() {
 
     }
 }

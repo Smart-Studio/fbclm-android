@@ -14,20 +14,11 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui.splash;
-
-import android.support.annotation.UiThread;
-
-import com.smartstudio.fbclm.ui.BaseView;
+package com.smartstudio.fbclm.ui;
 
 /**
- * TODO Add a class header comment
+ * Base view to be extend by all the views in the project
  */
-public interface SplashView extends BaseView {
-
-    /**
-     * Starts loading animation
-     **/
-    @UiThread
-    void startLoadingAnimation();
+public interface FbclmView<T> extends BaseView {
+    void showData(T data);
 }

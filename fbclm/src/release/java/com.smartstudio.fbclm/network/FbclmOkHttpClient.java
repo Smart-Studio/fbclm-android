@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smart Studio.
+ * Copyright 2015 Smart Studio
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,28 +14,23 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.injection;
+package com.smartstudio.fbclm.network;
 
-import android.support.v4.app.FragmentManager;
+import com.squareup.okhttp.Cache;
 
-import com.smartstudio.fbclm.ui.fbclm.FbclmView;
-
-import dagger.Module;
-import dagger.Provides;
+import javax.inject.Inject;
 
 /**
- * TODO Add a class header comment
+ * TODO Add javadoc documentation
  */
-@Module
-public class FbclmActivityModule {
-    private final FragmentManager mFragmentManager;
-
-    public FbclmActivityModule(FragmentManager fragmentManager) {
-        mFragmentManager = fragmentManager;
-    }
-
-    @Provides
-    public FragmentManager provideFragmentManager() {
-        return mFragmentManager;
+public class FbclmOkHttpClient extends CommonOkHttpClient {
+    /**
+     * Creates an instance of FbclmOkHttpClient
+     *
+     * @param cache Cache used in the OKHttpClient
+     **/
+    @Inject
+    public FbclmOkHttpClient(Cache cache) {
+        super(cache);
     }
 }

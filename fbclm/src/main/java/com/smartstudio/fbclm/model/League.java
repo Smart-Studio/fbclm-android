@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smart Studio.
+ * Copyright 2015 Smart Studio
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,24 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.injection;
+package com.smartstudio.fbclm.model;
 
-import java.lang.annotation.Retention;
+/**
+ * Represents a league
+ **/
+public class League {
+    private int id;
+    private String name;
 
-import javax.inject.Qualifier;
+    public League() {
 
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
+    }
 
-@Qualifier
-@Retention(RUNTIME)
-public @interface ForApplication {
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

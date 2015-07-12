@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smart Studio.
+ * Copyright 2015 Smart Studio
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui.splash;
+package com.smartstudio.fbclm.ui;
 
 /**
- * TODO Add a class header comment
+ * TODO Add javadoc documentation
  */
-public interface SplashController {
-    void navigateTo();
+public abstract class FbclmViewImpl<T> implements FbclmView<T> {
 }

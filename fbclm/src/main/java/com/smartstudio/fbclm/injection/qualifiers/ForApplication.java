@@ -14,20 +14,18 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui.splash;
+package com.smartstudio.fbclm.injection.qualifiers;
 
-import android.support.annotation.UiThread;
+import java.lang.annotation.Retention;
 
-import com.smartstudio.fbclm.ui.BaseView;
+import javax.inject.Qualifier;
+
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * TODO Add a class header comment
- */
-public interface SplashView extends BaseView {
-
-    /**
-     * Starts loading animation
-     **/
-    @UiThread
-    void startLoadingAnimation();
+ * Dagger qualifier used to inject an application {@link android.content.Context}
+ **/
+@Qualifier
+@Retention(RUNTIME)
+public @interface ForApplication {
 }

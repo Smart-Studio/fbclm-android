@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smart Studio.
+ * Copyright 2015 Smart Studio
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,22 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui.splash;
+package com.smartstudio.fbclm;
 
-import android.support.annotation.UiThread;
+import com.smartstudio.fbclm.ui.FbclmView;
 
-import com.smartstudio.fbclm.ui.BaseView;
+import javax.inject.Inject;
 
 /**
  * TODO Add a class header comment
  */
-public interface SplashView extends BaseView {
+public abstract class DataViewActivity<T> extends DataActivity<T> {
 
-    /**
-     * Starts loading animation
-     **/
-    @UiThread
-    void startLoadingAnimation();
+    @Inject
+    FbclmView<T> mView;
+
+    @Override
+    public void onDataLoaded(T data) {
+        mView.showData(data);
+    }
 }

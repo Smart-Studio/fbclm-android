@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smart Studio.
+ * Copyright 2015 Smart Studio
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,18 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui.splash;
+package com.smartstudio.fbclm.injection.scopes;
 
-import android.support.annotation.UiThread;
+import java.lang.annotation.Retention;
 
-import com.smartstudio.fbclm.ui.BaseView;
+import javax.inject.Scope;
+
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * TODO Add a class header comment
+ * Dagger application scope
  */
-public interface SplashView extends BaseView {
-
-    /**
-     * Starts loading animation
-     **/
-    @UiThread
-    void startLoadingAnimation();
+@Scope
+@Retention(RUNTIME)
+public @interface PerApplication {
 }

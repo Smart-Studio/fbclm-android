@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smart Studio.
+ * Copyright 2015 Smart Studio
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,13 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui.splash;
+package com.smartstudio.fbclm.network;
 
-import android.support.annotation.UiThread;
+import com.smartstudio.fbclm.model.League;
 
-import com.smartstudio.fbclm.ui.BaseView;
+import java.util.List;
 
-/**
- * TODO Add a class header comment
- */
-public interface SplashView extends BaseView {
 
-    /**
-     * Starts loading animation
-     **/
-    @UiThread
-    void startLoadingAnimation();
+public interface NetworkHelper {
+    List<League> requestLeagues(int seasonId, boolean forceCache);
 }

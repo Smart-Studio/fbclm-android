@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smart Studio.
+ * Copyright 2015 Smart Studio
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,22 +14,19 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.app;
+package com.smartstudio.fbclm.injection.scopes;
 
-import android.content.Context;
-import android.content.res.Resources;
+import java.lang.annotation.Retention;
 
-import com.smartstudio.fbclm.injection.ForApplication;
+import javax.inject.Scope;
 
-import dagger.Component;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * TODO Add a class header comment
+ * Dagger activity scope. Used in activity modules to indicate that the scope of the injected object
+ * is an activity
  */
-@Component(modules = FbclmModule.class)
-public interface FbclmComponent {
-    @ForApplication
-    Context provideContext();
-
-    Resources provideResources();
+@Scope
+@Retention(RUNTIME)
+public @interface PerActivity {
 }

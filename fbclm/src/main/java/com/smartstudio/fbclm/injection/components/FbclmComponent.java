@@ -14,38 +14,23 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.app;
+package com.smartstudio.fbclm.injection.components;
 
-import android.app.Application;
-import android.content.Context;
-import android.content.res.Resources;
+import com.smartstudio.fbclm.CommonApplication;
+import com.smartstudio.fbclm.injection.modules.FbclmModule;
+import com.smartstudio.fbclm.injection.modules.SplashScreenModule;
+import com.smartstudio.fbclm.injection.scopes.PerApplication;
 
-import com.smartstudio.fbclm.injection.ForApplication;
-
-import javax.inject.Named;
-
-import dagger.Module;
-import dagger.Provides;
+import dagger.Component;
 
 /**
  * TODO Add a class header comment
  */
-@Module
-public class FbclmModule {
-    private Application application;
 
-    public FbclmModule(Application application) {
-        this.application = application;
-    }
+@PerApplication
+@Component(modules = FbclmModule.class)
+public interface FbclmComponent {
+    SplashScreenComponent plus(SplashScreenModule module);
 
-    @Provides
-    @ForApplication
-    public Context provideContext() {
-        return application;
-    }
-
-    @Provides
-    public Resources provideResources() {
-        return application.getResources();
-    }
+    void injectApplication(CommonApplication application);
 }
