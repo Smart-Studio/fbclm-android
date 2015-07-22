@@ -21,7 +21,6 @@ import android.support.annotation.CallSuper;
 
 import com.smartstudio.fbclm.controller.Controller;
 import com.smartstudio.fbclm.network.NetworkInfoReceiver;
-import com.smartstudio.fbclm.network.NetworkInfoReceiverImpl;
 import com.smartstudio.fbclm.network.splash.NetworkManager;
 
 import javax.inject.Inject;

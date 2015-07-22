@@ -21,12 +21,19 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import javax.inject.Inject;
+
 /**
  * {@link NetworkInfoReceiver} implementation
  */
 public class NetworkInfoReceiverImpl extends NetworkInfoReceiver {
     private ConnectivityManager mConnectivityManager;
     private NetworkInfoReceiverListener mListener;
+
+    @Inject
+    public NetworkInfoReceiverImpl() {
+
+    }
 
     @Override
     public void onReceive(Context context, Intent intent) {
