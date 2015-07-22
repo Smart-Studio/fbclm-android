@@ -31,7 +31,7 @@ import dagger.Provides;
  * Splash screen module injecting all the needed dependencies for that screen
  */
 @Module
-public class SplashScreenModule {
+public class SplashScreenModule extends BaseModule {
     /**
      * Splash controller to by injected
      **/

@@ -1,4 +1,4 @@
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2015 Smart Studio
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,5 +15,7 @@
   -->
 
 <resources>
-    <string name="app_name" translatable="false">Fbclm</string>
+    <string name="splash_title" translatable="false">Federación Baloncesto Castilla-La Mancha</string>
+    <string name="splash_loading">Loading</string>
+    <string name="splash_error">You need to be connected to the Internet…</string>
 </resources>

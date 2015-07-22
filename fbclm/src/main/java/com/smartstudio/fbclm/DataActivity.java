@@ -16,7 +16,12 @@
 
 package com.smartstudio.fbclm;
 
+import android.os.Bundle;
+import android.support.annotation.CallSuper;
+
 import com.smartstudio.fbclm.controller.Controller;
+import com.smartstudio.fbclm.network.NetworkInfoReceiver;
+import com.smartstudio.fbclm.network.NetworkInfoReceiverImpl;
 import com.smartstudio.fbclm.network.splash.NetworkManager;
 
 import javax.inject.Inject;
@@ -28,6 +33,14 @@ public abstract class DataActivity<T> extends BaseActivity implements Controller
 
     @Inject
     NetworkManager mNetworkManager;
+    @Inject
+    NetworkInfoReceiver mNetworkInfoReceiver;
+
+    @CallSuper
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     protected void onStart() {

@@ -22,6 +22,8 @@ import android.content.res.Resources;
 
 import com.smartstudio.fbclm.BuildConfig;
 import com.smartstudio.fbclm.injection.qualifiers.ForApplication;
+import com.smartstudio.fbclm.io.PreferencesManager;
+import com.smartstudio.fbclm.io.PreferencesManagerImpl;
 
 import dagger.Module;
 import dagger.Provides;
@@ -57,6 +59,17 @@ public class FbclmModule {
     @Provides
     Resources provideResources() {
         return mApplication.getResources();
+    }
+
+    /**
+     * Provides {@link PreferencesManager} implementation
+     *
+     * @param preferencesManager {@link PreferencesManager} implementation
+     * @return PreferencesManager implementation
+     **/
+    @Provides
+    PreferencesManager providePreferences(PreferencesManagerImpl preferencesManager) {
+        return preferencesManager;
     }
 
     /**

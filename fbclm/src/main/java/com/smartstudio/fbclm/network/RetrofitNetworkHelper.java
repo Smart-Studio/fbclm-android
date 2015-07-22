@@ -13,7 +13,7 @@ import retrofit.http.Headers;
 import retrofit.http.Query;
 
 /**
- * Created by juanyanezgc on 10/05/15.
+ * {@link NetworkHelper} implementation using Retrofit library
  */
 @PerApplication
 public class RetrofitNetworkHelper implements NetworkHelper {

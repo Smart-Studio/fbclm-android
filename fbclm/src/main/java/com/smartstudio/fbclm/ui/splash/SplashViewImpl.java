@@ -51,4 +51,11 @@ public class SplashViewImpl extends BaseViewImpl implements SplashView {
             loadingAnimation.start();
         }
     }
+
+    @Override
+    public void showErrorMessage() {
+        String errorMessage = mResources.getString(R.string.splash_error);
+        mLoadingText.setText(errorMessage);
+        mLoadingText.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+    }
 }
