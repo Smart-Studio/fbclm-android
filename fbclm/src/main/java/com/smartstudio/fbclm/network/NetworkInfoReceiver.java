@@ -16,21 +16,16 @@
 
 package com.smartstudio.fbclm.network;
 
-import com.smartstudio.fbclm.model.League;
-
-import java.util.List;
+import android.content.BroadcastReceiver;
 
 /**
- * Network helper used to request from the backend any data needed by the app
+ * Network info receiver that keeps track of the status of the network connection
  */
-public interface NetworkHelper {
+public abstract class NetworkInfoReceiver extends BroadcastReceiver {
     /**
-     * Request the list of different league given a season
+     * Set the listener to notify of a change in the network to
      *
-     * @param seasonId   Id of the season
-     * @param forceCache Indicates whether it should be a network request or we need to load the
-     *                   content from the http cache
-     * @return List containing all the available leagues
+     * @param listener Listener to be notified
      **/
-    List<League> requestLeagues(int seasonId, boolean forceCache);
+    public abstract void setNetworkListener(NetworkInfoReceiverListener listener);
 }

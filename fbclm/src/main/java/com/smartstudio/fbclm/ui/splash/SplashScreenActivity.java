@@ -25,7 +25,9 @@ import com.smartstudio.fbclm.R;
 import com.smartstudio.fbclm.controller.SplashController;
 import com.smartstudio.fbclm.injection.components.SplashScreenComponent;
 import com.smartstudio.fbclm.injection.modules.SplashScreenModule;
+import com.smartstudio.fbclm.io.PreferencesManager;
 import com.smartstudio.fbclm.model.League;
+import com.smartstudio.fbclm.network.NetworkInfoReceiverImpl;
 import com.smartstudio.fbclm.ui.MainActivity;
 
 import java.util.List;
@@ -36,14 +38,25 @@ import javax.inject.Inject;
  *
  */
 public class SplashScreenActivity extends DataActivity<List<League>> implements SplashController {
-    private SplashScreenComponent mComponent;
     @Inject
-    SplashView mSplashView;
+    SplashView mView;
+    @Inject
+    PreferencesManager mPreferencesManager;
+    @Inject
+    NetworkInfoReceiverImpl mNetworkInfoReceiver;
+
+    private SplashScreenComponent mComponent;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mSplashView.startLoadingAnimation();
+        mView.startLoadingAnimation();
+        if (!mPreferencesManager.isSplashVisible()) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            overridePendingTransition(0, 0);
+            finish();
+        }
     }
 
     @Override
@@ -69,6 +82,7 @@ public class SplashScreenActivity extends DataActivity<List<League>> implements 
 
     @Override
     public void onDataLoaded(List<League> data) {
+        mPreferencesManager.hideSplashScreen();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         overridePendingTransition(0, 0);
@@ -77,6 +91,6 @@ public class SplashScreenActivity extends DataActivity<List<League>> implements 
 
     @Override
     public void onDataError() {
-
+        mView.showErrorMessage();
     }
 }

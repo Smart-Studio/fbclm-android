@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright 2015 Smart Studio.
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2015 Smart Studio
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -16,5 +15,6 @@
   -->
 
 <resources>
-  <string name="loading">Cargando</string>
+    <string name="splash_loading">Cargando</string>
+    <string name="splash_error">Asegurate de que estas conectado a Internet…</string>
 </resources>

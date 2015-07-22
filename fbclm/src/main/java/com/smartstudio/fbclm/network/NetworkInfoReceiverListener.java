@@ -16,21 +16,18 @@
 
 package com.smartstudio.fbclm.network;
 
-import com.smartstudio.fbclm.model.League;
-
-import java.util.List;
-
 /**
- * Network helper used to request from the backend any data needed by the app
+ * {@link NetworkInfoReceiver} listener that is notified when there is a change in the network
+ * connection
  */
-public interface NetworkHelper {
+public interface NetworkInfoReceiverListener {
     /**
-     * Request the list of different league given a season
-     *
-     * @param seasonId   Id of the season
-     * @param forceCache Indicates whether it should be a network request or we need to load the
-     *                   content from the http cache
-     * @return List containing all the available leagues
+     * Called when the device is connected to the network
      **/
-    List<League> requestLeagues(int seasonId, boolean forceCache);
+    void onNetworkConnected();
+
+    /**
+     * Called when the device is disconnected from the network
+     **/
+    void onNetworkDisconnected();
 }

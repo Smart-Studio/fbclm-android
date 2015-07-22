@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smart Studio.
+ * Copyright 2015 Smart Studio
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,26 +14,13 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui.splash;
-
-import android.support.annotation.UiThread;
-
-import com.smartstudio.fbclm.ui.BaseView;
+package com.smartstudio.fbclm.io;
 
 /**
  * TODO Add a class header comment
  */
-public interface SplashView extends BaseView {
+public interface PreferencesManager {
+    void hideSplashScreen();
 
-    /**
-     * Starts loading animation
-     **/
-    @UiThread
-    void startLoadingAnimation();
-
-    /**
-     * Shows an error message when data cannot be loaded
-     **/
-    @UiThread
-    void showErrorMessage();
+    boolean isSplashVisible();
 }
