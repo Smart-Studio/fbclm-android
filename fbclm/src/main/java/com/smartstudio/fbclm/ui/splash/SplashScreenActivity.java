@@ -27,7 +27,6 @@ import com.smartstudio.fbclm.injection.components.SplashScreenComponent;
 import com.smartstudio.fbclm.injection.modules.SplashScreenModule;
 import com.smartstudio.fbclm.io.PreferencesManager;
 import com.smartstudio.fbclm.model.League;
-import com.smartstudio.fbclm.network.NetworkInfoReceiverImpl;
 import com.smartstudio.fbclm.ui.MainActivity;
 
 import java.util.List;
@@ -42,8 +41,6 @@ public class SplashScreenActivity extends DataActivity<List<League>> implements 
     SplashView mView;
     @Inject
     PreferencesManager mPreferencesManager;
-    @Inject
-    NetworkInfoReceiverImpl mNetworkInfoReceiver;
 
     private SplashScreenComponent mComponent;
 

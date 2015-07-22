@@ -16,6 +16,7 @@
 
 package com.smartstudio.fbclm.injection.modules;
 
+import com.smartstudio.fbclm.network.NetworkInfoReceiver;
 import com.smartstudio.fbclm.network.NetworkInfoReceiverImpl;
 
 import dagger.Module;
@@ -28,7 +29,7 @@ import dagger.Provides;
 public abstract class BaseModule {
 
     @Provides
-    NetworkInfoReceiverImpl provideNetworkInfoReceiver() {
-        return new NetworkInfoReceiverImpl();
+    NetworkInfoReceiver provideNetworkInfoReceiver(NetworkInfoReceiverImpl receiver) {
+        return receiver;
     }
 }
