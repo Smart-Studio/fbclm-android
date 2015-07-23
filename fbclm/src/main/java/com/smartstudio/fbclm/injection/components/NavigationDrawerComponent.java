@@ -14,22 +14,19 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui;
+package com.smartstudio.fbclm.injection.components;
 
-import android.support.annotation.CallSuper;
-import android.support.annotation.NonNull;
-import android.view.View;
+import com.smartstudio.fbclm.injection.modules.NavigationDrawerModule;
+import com.smartstudio.fbclm.injection.scopes.PerActivity;
+import com.smartstudio.fbclm.ui.navigationdrawer.NavigationDrawerActivity;
 
-import butterknife.ButterKnife;
+import dagger.Subcomponent;
 
 /**
  * TODO Add javadoc documentation
  */
-public abstract class BaseViewImpl implements BaseView {
-
-    @CallSuper
-    @Override
-    public void init(@NonNull View view) {
-        ButterKnife.inject(this, view);
-    }
+@PerActivity
+@Subcomponent(modules = NavigationDrawerModule.class)
+public interface NavigationDrawerComponent {
+    void inject(NavigationDrawerActivity activity);
 }

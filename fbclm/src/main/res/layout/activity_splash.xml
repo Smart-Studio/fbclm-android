@@ -18,7 +18,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@color/primaryColor"
+    android:background="@color/primary_color"
     android:orientation="vertical"
     android:paddingEnd="@dimen/gap_xlarge"
     android:paddingLeft="@dimen/gap_xlarge"

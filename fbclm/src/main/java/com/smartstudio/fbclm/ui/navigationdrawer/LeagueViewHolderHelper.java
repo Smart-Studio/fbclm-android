@@ -14,22 +14,14 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui;
+package com.smartstudio.fbclm.ui.navigationdrawer;
 
-import android.support.annotation.CallSuper;
-import android.support.annotation.NonNull;
-import android.view.View;
-
-import butterknife.ButterKnife;
+import com.smartstudio.fbclm.model.League;
+import com.smartstudio.fbclm.ui.ViewHolderHelper;
 
 /**
  * TODO Add javadoc documentation
  */
-public abstract class BaseViewImpl implements BaseView {
-
-    @CallSuper
-    @Override
-    public void init(@NonNull View view) {
-        ButterKnife.inject(this, view);
-    }
+public interface LeagueViewHolderHelper extends ViewHolderHelper<League, LeagueViewHolder> {
+    
 }

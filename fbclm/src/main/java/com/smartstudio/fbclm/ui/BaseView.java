@@ -16,6 +16,7 @@
 
 package com.smartstudio.fbclm.ui;
 
+import android.support.annotation.NonNull;
 import android.view.View;
 
 /**
@@ -27,5 +28,5 @@ public interface BaseView {
      *
      * @param view View to be initialised
      **/
-    void init(View view);
+    void init(@NonNull View view);
 }

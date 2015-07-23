@@ -14,22 +14,18 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui;
+package com.smartstudio.fbclm.injection.qualifiers;
 
-import android.support.annotation.CallSuper;
-import android.support.annotation.NonNull;
-import android.view.View;
+import java.lang.annotation.Retention;
 
-import butterknife.ButterKnife;
+import javax.inject.Qualifier;
+
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * TODO Add javadoc documentation
- */
-public abstract class BaseViewImpl implements BaseView {
-
-    @CallSuper
-    @Override
-    public void init(@NonNull View view) {
-        ButterKnife.inject(this, view);
-    }
+ * Dagger qualifier used to inject an activity {@link android.content.Context}
+ **/
+@Qualifier
+@Retention(RUNTIME)
+public @interface ForActivity {
 }

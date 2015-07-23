@@ -20,6 +20,19 @@ package com.smartstudio.fbclm.model;
  * Represents a league
  **/
 public class League {
+    public static final String ADDECO_PLATA = "ADECCO PLATA T";
+    public static final String EBA = "EBA";
+    public static final String NACIONAL = "1ª NACIONAL MASCULINA";
+    public static final String AUTONOMICA_1 = "1ª AUTONOMICA MASCULINA ";
+    public static final String FEM_1 = "1ª DIVISION FEMENINA CLM";
+    public static final String AUTONOMICA_2 = "2ª AUTONOMICA MASCULINA";
+    public static final String SUB_20_MAS = "SUB-20 MASCULINA";
+    public static final String SUB_20_FEM = "SUB-20 FEMENINA";
+    public static final String JUNIOR_MAS_ESPECIAL = "JUNIOR MASCULINO ESPECIAL";
+    public static final String JUNIOR_FEM ="JUNIOR FEMENINO";
+    public static final String JUNIOR_MAS_PREFERENTE = "JUNIOR MASCULINO PREFERENTE";
+
+
     private int id;
     private String name;
 

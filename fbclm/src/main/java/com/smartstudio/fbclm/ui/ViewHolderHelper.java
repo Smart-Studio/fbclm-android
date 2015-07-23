@@ -16,20 +16,14 @@
 
 package com.smartstudio.fbclm.ui;
 
-import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
-import android.view.View;
-
-import butterknife.ButterKnife;
+import android.view.ViewGroup;
 
 /**
  * TODO Add javadoc documentation
  */
-public abstract class BaseViewImpl implements BaseView {
+public interface ViewHolderHelper<MODEL_TYPE, VIEW_HOLDER_TYPE> {
+    VIEW_HOLDER_TYPE getHolder(@NonNull ViewGroup parent, int viewType);
 
-    @CallSuper
-    @Override
-    public void init(@NonNull View view) {
-        ButterKnife.inject(this, view);
-    }
+    void bind(@NonNull VIEW_HOLDER_TYPE holder, @NonNull MODEL_TYPE item);
 }

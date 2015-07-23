@@ -18,6 +18,7 @@ package com.smartstudio.fbclm.injection.components;
 
 import com.smartstudio.fbclm.CommonApplication;
 import com.smartstudio.fbclm.injection.modules.FbclmModule;
+import com.smartstudio.fbclm.injection.modules.NavigationDrawerModule;
 import com.smartstudio.fbclm.injection.modules.SplashScreenModule;
 import com.smartstudio.fbclm.injection.scopes.PerApplication;
 
@@ -31,6 +32,8 @@ import dagger.Component;
 @Component(modules = FbclmModule.class)
 public interface FbclmComponent {
     SplashScreenComponent plus(SplashScreenModule module);
+
+    NavigationDrawerComponent plus(NavigationDrawerModule module);
 
     void injectApplication(CommonApplication application);
 }

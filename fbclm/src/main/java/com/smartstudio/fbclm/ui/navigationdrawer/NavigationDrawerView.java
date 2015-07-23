@@ -14,22 +14,21 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui;
+package com.smartstudio.fbclm.ui.navigationdrawer;
 
-import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
-import android.view.View;
+import android.view.MenuItem;
 
-import butterknife.ButterKnife;
+import com.smartstudio.fbclm.model.League;
+import com.smartstudio.fbclm.ui.FbclmView;
+
+import java.util.List;
 
 /**
  * TODO Add javadoc documentation
  */
-public abstract class BaseViewImpl implements BaseView {
+public interface NavigationDrawerView extends FbclmView<List<League>> {
+    void onMenuItemClicked(MenuItem item);
 
-    @CallSuper
-    @Override
-    public void init(@NonNull View view) {
-        ButterKnife.inject(this, view);
-    }
+    void onLeagueSelected(@NonNull League league);
 }

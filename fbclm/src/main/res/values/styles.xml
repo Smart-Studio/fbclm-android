@@ -2,9 +2,9 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
-        <item name="colorPrimary">@color/primaryColor</item>
-        <item name="colorAccent">@color/primaryColor</item>
-        <item name="colorPrimaryDark">@color/primaryColorDark</item>
+        <item name="colorPrimaryDark">@color/primary_color_dark</item>
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorAccent">@android:color/white</item>
     </style>
 
 </resources>

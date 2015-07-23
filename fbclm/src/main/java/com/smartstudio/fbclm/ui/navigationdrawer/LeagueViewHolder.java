@@ -14,12 +14,20 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui;
+package com.smartstudio.fbclm.ui.navigationdrawer;
 
-import android.app.Activity;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
 
 /**
- * TODO Add a class header comment
+ * TODO Add javadoc documentation
  */
-public class MainActivity extends Activity {
+public class LeagueViewHolder extends RecyclerView.ViewHolder {
+    public final TextView league;
+
+    public LeagueViewHolder(View itemView) {
+        super(itemView);
+        league = (TextView) itemView;
+    }
 }

@@ -14,10 +14,23 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui;
+package com.smartstudio.fbclm.controller;
+
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
+
+import com.smartstudio.fbclm.model.League;
+
+import java.util.List;
 
 /**
  * TODO Add javadoc documentation
  */
-public abstract class FbclmViewImpl<T> implements FbclmView<T> {
+public interface NavigationDrawerController extends Controller<List<League>> {
+    @Nullable
+    ActionBar setUpToolbar(@NonNull Toolbar toolbar);
+
+    void onLeagueClicked(League league);
 }

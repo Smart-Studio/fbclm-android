@@ -2,6 +2,7 @@ package com.smartstudio.fbclm.network;
 
 import com.smartstudio.fbclm.injection.scopes.PerApplication;
 import com.smartstudio.fbclm.model.League;
+import com.squareup.moshi.Moshi;
 
 import java.util.List;
 

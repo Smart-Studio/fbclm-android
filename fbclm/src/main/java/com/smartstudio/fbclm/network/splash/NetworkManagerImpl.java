@@ -61,7 +61,7 @@ public abstract class NetworkManagerImpl<T> implements NetworkManager {
 
     private Observable.OnSubscribe<T> onSubscribe(boolean forceCache) {
         return subscriber -> {
-            subscriber.onNext(NetworkManagerImpl.this.requestData(forceCache));
+            subscriber.onNext(requestData(forceCache));
             subscriber.onCompleted();
         };
     }
