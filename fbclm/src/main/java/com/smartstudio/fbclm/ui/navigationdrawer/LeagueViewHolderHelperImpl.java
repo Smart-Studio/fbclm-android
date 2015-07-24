@@ -17,7 +17,6 @@
 package com.smartstudio.fbclm.ui.navigationdrawer;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -36,15 +35,13 @@ import javax.inject.Inject;
  */
 public class LeagueViewHolderHelperImpl implements LeagueViewHolderHelper, View.OnClickListener {
     private final LayoutInflater mLayoutInflater;
-    private final Resources mResources;
     private final NavigationDrawerController mController;
     private int mSelectedPosition;
 
     @Inject
-    public LeagueViewHolderHelperImpl(@ForActivity Context context, Resources resources,
+    public LeagueViewHolderHelperImpl(@ForActivity Context context,
                                       NavigationDrawerController controller) {
         mLayoutInflater = LayoutInflater.from(context);
-        mResources = resources;
         mController = controller;
     }
 
@@ -60,15 +57,7 @@ public class LeagueViewHolderHelperImpl implements LeagueViewHolderHelper, View.
         int imageResourceId = getLeagueIcon(league.getName());
         holder.league.setCompoundDrawablesWithIntrinsicBounds(imageResourceId, 0, 0, 0);
 
-        if (mSelectedPosition == holder.getAdapterPosition()) {
-            holder.itemView.setBackgroundResource(R.color.primary_color);
-            holder.league.setTextColor(mResources.getColor(android.R.color.white));
-        } else {
-            holder.itemView.setBackgroundResource(android.R.color.white);
-            holder.league.setTextColor(mResources.getColor(R.color.primary_color));
-        }
-
-
+        holder.itemView.setSelected(mSelectedPosition == holder.getAdapterPosition());
         holder.itemView.setTag(R.id.view_holder_tag, holder);
         holder.itemView.setTag(R.id.league_tag, league);
         holder.itemView.setOnClickListener(this);

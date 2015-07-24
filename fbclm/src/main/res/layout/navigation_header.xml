@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright 2015 Smart Studio.
+  ~ Copyright 2015 Smart Studio
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -15,23 +15,17 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_gravity="center"
+    android:layout_height="140dp"
     android:background="@color/primary_color"
-    android:orientation="vertical"
-    android:paddingEnd="@dimen/gap_xlarge"
-    android:paddingLeft="@dimen/gap_xlarge"
-    android:paddingRight="@dimen/gap_xlarge"
-    android:paddingStart="@dimen/gap_xlarge"
-    tools:context=".ui.splash.SplashScreenActivity">
+    android:paddingTop="25dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/splash_anchor_view"
-        android:layout_marginBottom="20dp"
+        android:layout_centerVertical="true"
+        android:layout_margin="16dp"
         android:drawableLeft="@mipmap/ic_fbclm"
         android:drawablePadding="@dimen/gap_normal"
         android:drawableStart="@mipmap/ic_fbclm"
@@ -39,23 +33,5 @@
         android:text="@string/splash_title"
         android:textColor="@android:color/white"
         android:textSize="22sp" />
-
-    <View
-        android:id="@+id/splash_anchor_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_centerInParent="true" />
-
-    <TextView
-        android:id="@+id/splash_text_loading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/splash_anchor_view"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/gap_xlarge"
-        android:gravity="center"
-        android:text="@string/splash_loading"
-        android:textColor="@android:color/white"
-        android:textSize="20sp" />
 
 </RelativeLayout>
