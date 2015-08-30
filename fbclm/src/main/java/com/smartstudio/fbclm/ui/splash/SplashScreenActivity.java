@@ -27,14 +27,15 @@ import com.smartstudio.fbclm.injection.components.SplashScreenComponent;
 import com.smartstudio.fbclm.injection.modules.SplashScreenModule;
 import com.smartstudio.fbclm.io.PreferencesManager;
 import com.smartstudio.fbclm.model.League;
-import com.smartstudio.fbclm.ui.MainActivity;
+import com.smartstudio.fbclm.ui.navigationdrawer.NavigationDrawerActivity;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
 /**
- *
+ * Activity that displays a splash screen to load the first content of the app if the content isn't
+ * cached
  */
 public class SplashScreenActivity extends DataActivity<List<League>> implements SplashController {
     @Inject
@@ -47,13 +48,14 @@ public class SplashScreenActivity extends DataActivity<List<League>> implements 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mView.startLoadingAnimation();
+
         if (!mPreferencesManager.isSplashVisible()) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            overridePendingTransition(0, 0);
+            NavigationDrawerActivity.launch(this);
             finish();
+            return;
         }
+
+        mView.startLoadingAnimation();
     }
 
     @Override
@@ -80,9 +82,7 @@ public class SplashScreenActivity extends DataActivity<List<League>> implements 
     @Override
     public void onDataLoaded(List<League> data) {
         mPreferencesManager.hideSplashScreen();
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        overridePendingTransition(0, 0);
+        NavigationDrawerActivity.launch(this);
         finish();
     }
 

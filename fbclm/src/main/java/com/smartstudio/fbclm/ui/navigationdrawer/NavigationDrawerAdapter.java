@@ -14,10 +14,23 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui;
+package com.smartstudio.fbclm.ui.navigationdrawer;
+
+import android.support.v7.widget.RecyclerView;
+
+import com.smartstudio.fbclm.model.League;
+
+import java.util.List;
 
 /**
- * TODO Add javadoc documentation
+ * Interface definition for the navigation drawer recycler view adapter that displays the list of all
+ * available leagues
  */
-public abstract class FbclmViewImpl<T> implements FbclmView<T> {
+public abstract class NavigationDrawerAdapter extends RecyclerView.Adapter<LeagueViewHolder> {
+    /**
+     * Sets the list of available leagues to be displayed by the adapter
+     *
+     * @param leagues List of available leagues
+     **/
+    public abstract void setLeagues(List<League> leagues);
 }

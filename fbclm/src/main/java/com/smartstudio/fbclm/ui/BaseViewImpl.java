@@ -16,16 +16,20 @@
 
 package com.smartstudio.fbclm.ui;
 
+import android.support.annotation.CallSuper;
+import android.support.annotation.NonNull;
 import android.view.View;
 
 import butterknife.ButterKnife;
 
 /**
- * TODO Add javadoc documentation
+ * Base view implementation that injects the views using butterknife
  */
 public abstract class BaseViewImpl implements BaseView {
+
+    @CallSuper
     @Override
-    public void init(View view) {
+    public void init(@NonNull View view) {
         ButterKnife.inject(this, view);
     }
 }

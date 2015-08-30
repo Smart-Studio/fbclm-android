@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright 2015 Smart Studio.
+  ~ Copyright 2015 Smart Studio
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -15,8 +15,6 @@
   -->
 
 <resources>
-    <color name="primary_color">#9e016c</color>
-    <color name="primary_color_dark">#790955</color>
-    <color name="dark_grey">#E0E0e0</color>
-    <color name="grey">#EEEEEE</color>
+    <item name="view_holder_tag" type="id" />
+    <item name="league_tag" type="id" />
 </resources>

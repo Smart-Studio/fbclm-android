@@ -24,7 +24,8 @@ import com.smartstudio.fbclm.injection.qualifiers.ForApplication;
 import javax.inject.Inject;
 
 /**
- * TODO Add a class header comment
+ * {@link PreferencesManager} implementation that stores the preferences using Android shared
+ * preferences
  */
 public class PreferencesManagerImpl implements PreferencesManager {
     private static final String PREFERENCES_NAME = "fbclm";
@@ -32,6 +33,7 @@ public class PreferencesManagerImpl implements PreferencesManager {
 
     private SharedPreferences mSharedPreferences;
 
+    /****/
     @Inject
     public PreferencesManagerImpl(@ForApplication Context context) {
         mSharedPreferences = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);

@@ -16,10 +16,11 @@
 
 package com.smartstudio.fbclm.ui;
 
+import android.support.annotation.NonNull;
 import android.view.View;
 
 /**
- * TODO Add javadoc documentation
+ * Interface definition for a base view that needs to be initialised
  */
 public interface BaseView {
     /**
@@ -27,5 +28,5 @@ public interface BaseView {
      *
      * @param view View to be initialised
      **/
-    void init(View view);
+    void init(@NonNull View view);
 }

@@ -29,7 +29,7 @@ import timber.log.Timber;
  * TODO Add javadoc documentation
  */
 public abstract class NetworkManagerImpl<T> implements NetworkManager {
-    private final Controller<T> mController;
+    protected final Controller<T> mController;
     protected final NetworkHelper mNetworkHelper;
     private Subscription mSubscription;
 
@@ -40,8 +40,9 @@ public abstract class NetworkManagerImpl<T> implements NetworkManager {
 
     @Override
     public void loadData() {
-        createDataObservable(false)
-                .onErrorResumeNext(createDataObservable(true))
+        Observable<T> observable = createDataObservable(false);
+        Observable.concat(createDataObservable(true), observable)
+                .onErrorResumeNext(observable)
                 .subscribe(mController::onDataLoaded, this::onError);
     }
 
@@ -53,7 +54,7 @@ public abstract class NetworkManagerImpl<T> implements NetworkManager {
         }
     }
 
-    private Observable<T> createDataObservable(boolean forceCache) {
+    protected Observable<T> createDataObservable(boolean forceCache) {
         return Observable.create(onSubscribe(forceCache))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
@@ -61,14 +62,14 @@ public abstract class NetworkManagerImpl<T> implements NetworkManager {
 
     private Observable.OnSubscribe<T> onSubscribe(boolean forceCache) {
         return subscriber -> {
-            subscriber.onNext(NetworkManagerImpl.this.requestData(forceCache));
+            subscriber.onNext(requestData(forceCache));
             subscriber.onCompleted();
         };
     }
 
     protected abstract T requestData(boolean forceCache);
 
-    private void onError(Throwable throwable) {
+    protected void onError(Throwable throwable) {
         Timber.e(throwable, throwable.getMessage());
         mController.onDataError();
     }

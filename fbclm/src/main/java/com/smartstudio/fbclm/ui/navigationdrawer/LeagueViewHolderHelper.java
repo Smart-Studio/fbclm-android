@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smart Studio.
+ * Copyright 2015 Smart Studio
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,26 +14,15 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui.splash;
+package com.smartstudio.fbclm.ui.navigationdrawer;
 
-import android.support.annotation.UiThread;
-
-import com.smartstudio.fbclm.ui.BaseView;
+import com.smartstudio.fbclm.model.League;
+import com.smartstudio.fbclm.ui.ViewHolderHelper;
 
 /**
- * Interface definition for the class that manages all the view related logic for the splash screen
+ * Interface definition for helper class that creates and populates a {@link LeagueViewHolder}
+ * given a {@link League}
  */
-public interface SplashView extends BaseView {
+public interface LeagueViewHolderHelper extends ViewHolderHelper<LeagueViewHolder, League> {
 
-    /**
-     * Starts loading animation
-     **/
-    @UiThread
-    void startLoadingAnimation();
-
-    /**
-     * Shows an error message when data cannot be loaded
-     **/
-    @UiThread
-    void showErrorMessage();
 }

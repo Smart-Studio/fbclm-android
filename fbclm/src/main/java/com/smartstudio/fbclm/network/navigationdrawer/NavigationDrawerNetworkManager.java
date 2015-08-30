@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.network.splash;
+package com.smartstudio.fbclm.network.navigationdrawer;
 
-import com.smartstudio.fbclm.controller.SplashController;
+import com.smartstudio.fbclm.controller.NavigationDrawerController;
 import com.smartstudio.fbclm.model.League;
 import com.smartstudio.fbclm.network.NetworkHelper;
+import com.smartstudio.fbclm.network.splash.NetworkManagerImpl;
 
 import java.util.List;
 
@@ -27,24 +28,15 @@ import javax.inject.Inject;
 /**
  * TODO Add javadoc documentation
  */
-public class SplashNetworkManagerImpl extends NetworkManagerImpl<List<League>> {
-    private final int mSeasonId;
+public class NavigationDrawerNetworkManager extends NetworkManagerImpl<List<League>> {
 
     @Inject
-    public SplashNetworkManagerImpl(SplashController controller, NetworkHelper networkHelper,
-                                    int seasonId) {
+    public NavigationDrawerNetworkManager(NetworkHelper networkHelper, NavigationDrawerController controller) {
         super(controller, networkHelper);
-        mSeasonId = seasonId;
-    }
-
-    @Override
-    public void loadData() {
-        createDataObservable(false)
-                .subscribe(mController::onDataLoaded, this::onError);
     }
 
     @Override
     protected List<League> requestData(boolean forceCache) {
-        return mNetworkHelper.requestLeagues(mSeasonId, forceCache);
+        return mNetworkHelper.requestLeagues(104, forceCache);
     }
 }

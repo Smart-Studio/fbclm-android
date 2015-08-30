@@ -14,12 +14,18 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui;
+package com.smartstudio.fbclm.injection.qualifiers;
 
-import android.app.Activity;
+import java.lang.annotation.Retention;
+
+import javax.inject.Qualifier;
+
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * TODO Add a class header comment
- */
-public class MainActivity extends Activity {
+ * Dagger qualifier used to inject an activity {@link android.content.Context}
+ **/
+@Qualifier
+@Retention(RUNTIME)
+public @interface ForActivity {
 }

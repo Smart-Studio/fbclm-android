@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smart Studio.
+ * Copyright 2015 Smart Studio
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,26 +14,19 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui.splash;
+package com.smartstudio.fbclm.injection.components;
 
-import android.support.annotation.UiThread;
+import com.smartstudio.fbclm.injection.modules.NavigationDrawerModule;
+import com.smartstudio.fbclm.injection.scopes.PerActivity;
+import com.smartstudio.fbclm.ui.navigationdrawer.NavigationDrawerActivity;
 
-import com.smartstudio.fbclm.ui.BaseView;
+import dagger.Subcomponent;
 
 /**
- * Interface definition for the class that manages all the view related logic for the splash screen
+ * TODO Add javadoc documentation
  */
-public interface SplashView extends BaseView {
-
-    /**
-     * Starts loading animation
-     **/
-    @UiThread
-    void startLoadingAnimation();
-
-    /**
-     * Shows an error message when data cannot be loaded
-     **/
-    @UiThread
-    void showErrorMessage();
+@PerActivity
+@Subcomponent(modules = NavigationDrawerModule.class)
+public interface NavigationDrawerComponent {
+    void inject(NavigationDrawerActivity activity);
 }
