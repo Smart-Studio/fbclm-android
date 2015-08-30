@@ -17,10 +17,18 @@
 package com.smartstudio.fbclm.io;
 
 /**
- * TODO Add a class header comment
+ * Interface definition for the class that manages the preferences in the app
  */
 public interface PreferencesManager {
+    /**
+     * Called when the splash screen doesn't need to be displayed anymore
+     **/
     void hideSplashScreen();
 
+    /**
+     * Returns whether the splash screen needs to be displayed or not
+     *
+     * @return True when the splash screen needs to be displayed, false otherwise
+     **/
     boolean isSplashVisible();
 }

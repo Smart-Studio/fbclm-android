@@ -17,6 +17,7 @@
 package com.smartstudio.fbclm.ui.navigationdrawer;
 
 import android.content.Context;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -31,13 +32,27 @@ import com.smartstudio.fbclm.model.League;
 import javax.inject.Inject;
 
 /**
- * TODO Add javadoc documentation
+ * {@link LeagueViewHolderHelper} implementation creating a view holder that displays the name and
+ * icon for the given leagues
  */
 public class LeagueViewHolderHelperImpl implements LeagueViewHolderHelper, View.OnClickListener {
+    /**
+     * Layout inflater used to inflate the views used in the view holder
+     **/
     private final LayoutInflater mLayoutInflater;
+    /**
+     * Controller to delegate the event where the user selects a league to
+     **/
     private final NavigationDrawerController mController;
+    /**
+     * Current position of the selected league
+     **/
     private int mSelectedPosition;
 
+    /**
+     * @param context    Context to obtain a layout inflater from
+     * @param controller Controller to delegate the event where the user selects a league to
+     **/
     @Inject
     public LeagueViewHolderHelperImpl(@ForActivity Context context,
                                       NavigationDrawerController controller) {
@@ -74,9 +89,16 @@ public class LeagueViewHolderHelperImpl implements LeagueViewHolderHelper, View.
     }
 
 
+    /**
+     * Returns the drawable resource integer for the icon of the given league
+     *
+     * @param leagueName Name of the league
+     * @return Drawable integer for the icon of the given league
+     **/
+    @DrawableRes
     private int getLeagueIcon(String leagueName) {
         if (leagueName == null) {
-            return 0;
+            return R.mipmap.ic_jccm;
         }
 
         switch (leagueName) {

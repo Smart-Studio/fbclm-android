@@ -23,7 +23,7 @@ import android.view.View;
 import butterknife.ButterKnife;
 
 /**
- * TODO Add javadoc documentation
+ * Base view implementation that injects the views using butterknife
  */
 public abstract class BaseViewImpl implements BaseView {
 

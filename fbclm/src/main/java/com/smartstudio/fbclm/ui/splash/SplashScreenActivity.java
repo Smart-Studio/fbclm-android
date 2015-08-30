@@ -34,7 +34,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 /**
- *
+ * Activity that displays a splash screen to load the first content of the app if the content isn't
+ * cached
  */
 public class SplashScreenActivity extends DataActivity<List<League>> implements SplashController {
     @Inject
@@ -81,9 +82,7 @@ public class SplashScreenActivity extends DataActivity<List<League>> implements 
     @Override
     public void onDataLoaded(List<League> data) {
         mPreferencesManager.hideSplashScreen();
-        Intent intent = new Intent(this, NavigationDrawerActivity.class);
-        startActivity(intent);
-        overridePendingTransition(0, 0);
+        NavigationDrawerActivity.launch(this);
         finish();
     }
 

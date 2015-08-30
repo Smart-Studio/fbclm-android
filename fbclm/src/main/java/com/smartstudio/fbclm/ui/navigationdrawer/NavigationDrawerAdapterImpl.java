@@ -25,12 +25,23 @@ import java.util.List;
 import javax.inject.Inject;
 
 /**
- * TODO Add javadoc documentation
+ * {@link NavigationDrawerAdapter} implementation
  */
 public class NavigationDrawerAdapterImpl extends NavigationDrawerAdapter {
+    /**
+     * League view holders helper
+     **/
     private final LeagueViewHolderHelper mViewHolderHelper;
+    /**
+     * List containing the data of all the available leagues
+     **/
     private List<League> mLeagues;
 
+    /**
+     * Creates an instance of the navigation drawer adapter
+     *
+     * @param viewHolderHelper League view holders helper
+     **/
     @Inject
     public NavigationDrawerAdapterImpl(LeagueViewHolderHelper viewHolderHelper) {
         mViewHolderHelper = viewHolderHelper;

@@ -28,10 +28,13 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Splash screen module injecting all the needed dependencies for that screen
+ * Module injecting all the needed dependencies for the splash screen
  */
 @Module
 public class SplashScreenModule extends BaseModule {
+    //TODO: Make this dynamic later
+    private static final int SEASON_ID = 104;
+
     /**
      * Splash controller to by injected
      **/
@@ -93,5 +96,11 @@ public class SplashScreenModule extends BaseModule {
     @PerActivity
     SplashController provideSplashController() {
         return mController;
+    }
+
+    @Provides
+    @PerActivity
+    int provideSeasonId() {
+        return SEASON_ID;
     }
 }

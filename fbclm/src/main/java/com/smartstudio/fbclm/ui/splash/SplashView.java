@@ -21,7 +21,7 @@ import android.support.annotation.UiThread;
 import com.smartstudio.fbclm.ui.BaseView;
 
 /**
- * TODO Add a class header comment
+ * Interface definition for the class that manages all the view related logic for the splash screen
  */
 public interface SplashView extends BaseView {
 

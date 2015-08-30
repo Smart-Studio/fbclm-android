@@ -25,10 +25,21 @@ import com.smartstudio.fbclm.ui.FbclmView;
 import java.util.List;
 
 /**
- * TODO Add javadoc documentation
+ * Interface definition of the class that manages all the view related logic for the navigation drawer
  */
 public interface NavigationDrawerView extends FbclmView<List<League>> {
-    void onMenuItemClicked(MenuItem item);
 
+    /**
+     * Called when a menu item is clicked
+     *
+     * @param item Menu item clicked
+     **/
+    void onMenuItemClicked(@NonNull MenuItem item);
+
+    /**
+     * Called whe na league has been selected in the navigation drawer
+     *
+     * @param league Selected league
+     **/
     void onLeagueSelected(@NonNull League league);
 }

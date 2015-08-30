@@ -21,9 +21,12 @@ import android.view.View;
 import android.widget.TextView;
 
 /**
- * TODO Add javadoc documentation
+ * View holder class for each league item present in the navigation drawer
  */
 public class LeagueViewHolder extends RecyclerView.ViewHolder {
+    /**
+     * Text view displaying the name and icon for each league
+     **/
     public final TextView league;
 
     public LeagueViewHolder(View itemView) {

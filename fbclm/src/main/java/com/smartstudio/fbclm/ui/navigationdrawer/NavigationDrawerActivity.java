@@ -36,19 +36,29 @@ import java.util.List;
 import javax.inject.Inject;
 
 /**
- * TODO Add a class header comment
+ * Activity that displays a navigation drawer with the list of available leagues
  */
 public class NavigationDrawerActivity extends DataViewActivity<List<League>> implements NavigationDrawerController {
 
-    @Inject
-    NavigationDrawerView mView;
-
+    /**
+     * Launches a new {@link NavigationDrawerActivity}
+     *
+     * @param activity Activity to be used as the context to launch the new activity
+     **/
     public static void launch(Activity activity) {
         Intent intent = new Intent(activity, NavigationDrawerActivity.class);
         activity.startActivity(intent);
         activity.overridePendingTransition(0, 0);
     }
 
+    /**
+     * Object that managed all the related view logic for the navigation drawer
+     **/
+    @Inject
+    NavigationDrawerView mView;
+    /**
+     * Dagger component used by this activity
+     **/
     private NavigationDrawerComponent mComponent;
 
     @Override

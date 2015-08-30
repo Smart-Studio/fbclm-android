@@ -28,7 +28,7 @@ import javax.inject.Inject;
 import butterknife.InjectView;
 
 /**
- * TODO Add a class header comment
+ * {@link SplashView} implementation
  */
 public class SplashViewImpl extends BaseViewImpl implements SplashView {
     @Inject

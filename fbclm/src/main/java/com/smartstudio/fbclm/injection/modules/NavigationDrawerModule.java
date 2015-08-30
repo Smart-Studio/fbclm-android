@@ -17,16 +17,18 @@
 package com.smartstudio.fbclm.injection.modules;
 
 import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import com.smartstudio.fbclm.controller.NavigationDrawerController;
 import com.smartstudio.fbclm.injection.qualifiers.ForActivity;
+import com.smartstudio.fbclm.injection.qualifiers.ForApplication;
 import com.smartstudio.fbclm.injection.scopes.PerActivity;
 import com.smartstudio.fbclm.model.League;
 import com.smartstudio.fbclm.network.navigationdrawer.NavigationDrawerNetworkManager;
 import com.smartstudio.fbclm.network.splash.NetworkManager;
 import com.smartstudio.fbclm.ui.BaseView;
 import com.smartstudio.fbclm.ui.FbclmView;
-import com.smartstudio.fbclm.ui.ViewHolderHelper;
 import com.smartstudio.fbclm.ui.navigationdrawer.LeagueViewHolderHelper;
 import com.smartstudio.fbclm.ui.navigationdrawer.LeagueViewHolderHelperImpl;
 import com.smartstudio.fbclm.ui.navigationdrawer.NavigationDrawerAdapter;
@@ -100,5 +102,11 @@ public class NavigationDrawerModule extends BaseModule {
     @PerActivity
     LeagueViewHolderHelper provideViewHolderHelper(LeagueViewHolderHelperImpl viewHolderHelper) {
         return viewHolderHelper;
+    }
+
+    @Provides
+    @PerActivity
+    RecyclerView.LayoutManager provideLayoutManager(@ForApplication Context context) {
+        return new LinearLayoutManager(context);
     }
 }

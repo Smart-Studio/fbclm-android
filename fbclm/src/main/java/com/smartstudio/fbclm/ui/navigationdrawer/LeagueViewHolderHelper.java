@@ -20,8 +20,9 @@ import com.smartstudio.fbclm.model.League;
 import com.smartstudio.fbclm.ui.ViewHolderHelper;
 
 /**
- * TODO Add javadoc documentation
+ * Interface definition for helper class that creates and populates a {@link LeagueViewHolder}
+ * given a {@link League}
  */
-public interface LeagueViewHolderHelper extends ViewHolderHelper<League, LeagueViewHolder> {
-    
+public interface LeagueViewHolderHelper extends ViewHolderHelper<LeagueViewHolder, League> {
+
 }

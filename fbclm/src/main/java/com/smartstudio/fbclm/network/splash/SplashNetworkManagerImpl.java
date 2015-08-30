@@ -28,14 +28,23 @@ import javax.inject.Inject;
  * TODO Add javadoc documentation
  */
 public class SplashNetworkManagerImpl extends NetworkManagerImpl<List<League>> {
+    private final int mSeasonId;
 
     @Inject
-    public SplashNetworkManagerImpl(SplashController controller, NetworkHelper networkHelper) {
+    public SplashNetworkManagerImpl(SplashController controller, NetworkHelper networkHelper,
+                                    int seasonId) {
         super(controller, networkHelper);
+        mSeasonId = seasonId;
+    }
+
+    @Override
+    public void loadData() {
+        createDataObservable(false)
+                .subscribe(mController::onDataLoaded, this::onError);
     }
 
     @Override
     protected List<League> requestData(boolean forceCache) {
-        return mNetworkHelper.requestLeagues(104, forceCache);
+        return mNetworkHelper.requestLeagues(mSeasonId, forceCache);
     }
 }

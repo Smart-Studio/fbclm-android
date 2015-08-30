@@ -20,10 +20,23 @@ import android.support.annotation.NonNull;
 import android.view.ViewGroup;
 
 /**
- * TODO Add javadoc documentation
+ * Interface definition for a helper class that creates and binds data into a view holder
  */
-public interface ViewHolderHelper<MODEL_TYPE, VIEW_HOLDER_TYPE> {
+public interface ViewHolderHelper<VIEW_HOLDER_TYPE, MODEL_TYPE> {
+    /**
+     * Creates a new view holder for the specified type
+     *
+     * @param parent   View holder parent view
+     * @param viewType Adapter view type
+     * @return View holder for the given view type
+     **/
     VIEW_HOLDER_TYPE getHolder(@NonNull ViewGroup parent, int viewType);
 
-    void bind(@NonNull VIEW_HOLDER_TYPE holder, @NonNull MODEL_TYPE item);
+    /**
+     * Binds the corresponding data into the view holder
+     *
+     * @param viewHolder View holder to bind the data to
+     * @param item       Data to bind in the view holder
+     **/
+    void bind(@NonNull VIEW_HOLDER_TYPE viewHolder, @NonNull MODEL_TYPE item);
 }

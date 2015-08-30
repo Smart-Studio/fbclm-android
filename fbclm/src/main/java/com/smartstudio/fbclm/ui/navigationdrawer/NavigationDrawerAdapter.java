@@ -23,8 +23,14 @@ import com.smartstudio.fbclm.model.League;
 import java.util.List;
 
 /**
- * TODO Add javadoc documentation
+ * Interface definition for the navigation drawer recycler view adapter that displays the list of all
+ * available leagues
  */
 public abstract class NavigationDrawerAdapter extends RecyclerView.Adapter<LeagueViewHolder> {
+    /**
+     * Sets the list of available leagues to be displayed by the adapter
+     *
+     * @param leagues List of available leagues
+     **/
     public abstract void setLeagues(List<League> leagues);
 }

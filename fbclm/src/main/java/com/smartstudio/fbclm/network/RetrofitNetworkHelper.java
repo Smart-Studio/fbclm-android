@@ -21,7 +21,7 @@ public class RetrofitNetworkHelper implements NetworkHelper {
         @GET("/leagues")
         List<League> leagues(@Query("season") int seasonId);
 
-        @Headers("Cache-Control: max-stale=" + Integer.MAX_VALUE)
+        @Headers("Cache-Control: only-if-cached, max-stale=" + Integer.MAX_VALUE)
         @GET("/leagues")
         List<League> cachedLeagues(@Query("season") int seasonId);
     }

@@ -22,15 +22,27 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 
 import com.smartstudio.fbclm.model.League;
+import com.smartstudio.fbclm.ui.navigationdrawer.NavigationDrawerActivity;
 
 import java.util.List;
 
 /**
- * TODO Add javadoc documentation
+ * Interface definition for the controller used by {@link NavigationDrawerActivity}
  */
 public interface NavigationDrawerController extends Controller<List<League>> {
+    /**
+     * Sets up the toolbar as the activity action bar
+     *
+     * @param toolbar Toolbar to be used as an action bar
+     * @return Initialised action bar wrapping the given toolbar
+     **/
     @Nullable
     ActionBar setUpToolbar(@NonNull Toolbar toolbar);
 
+    /**
+     * Manages the event where the user selects a league in the navigation drawer
+     *
+     * @param league Selected league
+     **/
     void onLeagueClicked(League league);
 }

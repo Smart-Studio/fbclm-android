@@ -20,7 +20,7 @@ import android.support.annotation.NonNull;
 import android.view.View;
 
 /**
- * TODO Add javadoc documentation
+ * Interface definition for a base view that needs to be initialised
  */
 public interface BaseView {
     /**

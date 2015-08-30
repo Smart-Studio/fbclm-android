@@ -20,7 +20,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -43,18 +42,23 @@ import butterknife.InjectView;
 public class NavigationDrawerViewImpl extends BaseViewImpl implements NavigationDrawerView {
     private final NavigationDrawerController mController;
     private final NavigationDrawerAdapter mAdapter;
+    private final RecyclerView.LayoutManager mLayoutManager;
 
     @InjectView(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
+
     @InjectView(R.id.toolbar)
     Toolbar mToolbar;
+
     @InjectView(R.id.drawer_list)
     RecyclerView mDrawerList;
 
     @Inject
-    public NavigationDrawerViewImpl(NavigationDrawerController controller, NavigationDrawerAdapter adapter) {
+    public NavigationDrawerViewImpl(NavigationDrawerController controller, NavigationDrawerAdapter adapter,
+                                    RecyclerView.LayoutManager layoutManager) {
         mController = controller;
         mAdapter = adapter;
+        mLayoutManager = layoutManager;
     }
 
     @Override
@@ -66,7 +70,7 @@ public class NavigationDrawerViewImpl extends BaseViewImpl implements Navigation
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        mDrawerList.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
+        mDrawerList.setLayoutManager(mLayoutManager);
         mDrawerList.setAdapter(mAdapter);
     }
 
@@ -77,7 +81,7 @@ public class NavigationDrawerViewImpl extends BaseViewImpl implements Navigation
 
 
     @Override
-    public void onMenuItemClicked(MenuItem item) {
+    public void onMenuItemClicked(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
