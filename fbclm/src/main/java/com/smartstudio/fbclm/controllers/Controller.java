@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.controller;
+package com.smartstudio.fbclm.controllers;
 
 /**
  * TODO Add javadoc documentation

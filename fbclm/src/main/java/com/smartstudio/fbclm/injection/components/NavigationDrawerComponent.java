@@ -18,7 +18,7 @@ package com.smartstudio.fbclm.injection.components;
 
 import com.smartstudio.fbclm.injection.modules.NavigationDrawerModule;
 import com.smartstudio.fbclm.injection.scopes.PerActivity;
-import com.smartstudio.fbclm.ui.navigationdrawer.NavigationDrawerActivity;
+import com.smartstudio.fbclm.controllers.navigationdrawer.NavigationDrawerActivity;
 
 import dagger.Subcomponent;
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.io;
+package com.smartstudio.fbclm.persistence;
 
 /**
  * Interface definition for the class that manages the preferences in the app

@@ -18,7 +18,7 @@ package com.smartstudio.fbclm.injection.components;
 
 import com.smartstudio.fbclm.injection.modules.SplashScreenModule;
 import com.smartstudio.fbclm.injection.scopes.PerActivity;
-import com.smartstudio.fbclm.ui.splash.SplashScreenActivity;
+import com.smartstudio.fbclm.controllers.splash.SplashScreenActivity;
 
 import dagger.Subcomponent;
 

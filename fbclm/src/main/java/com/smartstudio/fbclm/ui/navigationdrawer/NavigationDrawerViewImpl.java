@@ -26,7 +26,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.smartstudio.fbclm.R;
-import com.smartstudio.fbclm.controller.NavigationDrawerController;
+import com.smartstudio.fbclm.controllers.navigationdrawer.NavigationDrawerController;
 import com.smartstudio.fbclm.model.League;
 import com.smartstudio.fbclm.ui.BaseViewImpl;
 
@@ -34,7 +34,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.InjectView;
+import butterknife.Bind;
 
 /**
  * TODO Add javadoc documentation
@@ -44,14 +44,14 @@ public class NavigationDrawerViewImpl extends BaseViewImpl implements Navigation
     private final NavigationDrawerAdapter mAdapter;
     private final RecyclerView.LayoutManager mLayoutManager;
 
-    @InjectView(R.id.drawer_layout)
-    DrawerLayout mDrawerLayout;
+    @Bind(R.id.drawer_layout)
+    protected DrawerLayout mDrawerLayout;
 
-    @InjectView(R.id.toolbar)
-    Toolbar mToolbar;
+    @Bind(R.id.toolbar)
+    protected Toolbar mToolbar;
 
-    @InjectView(R.id.drawer_list)
-    RecyclerView mDrawerList;
+    @Bind(R.id.drawer_list)
+    protected RecyclerView mDrawerList;
 
     @Inject
     public NavigationDrawerViewImpl(NavigationDrawerController controller, NavigationDrawerAdapter adapter,

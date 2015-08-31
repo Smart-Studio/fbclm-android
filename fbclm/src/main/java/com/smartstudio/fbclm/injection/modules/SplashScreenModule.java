@@ -16,9 +16,9 @@
 
 package com.smartstudio.fbclm.injection.modules;
 
-import com.smartstudio.fbclm.controller.SplashController;
+import com.smartstudio.fbclm.controllers.splash.SplashController;
 import com.smartstudio.fbclm.injection.scopes.PerActivity;
-import com.smartstudio.fbclm.network.splash.NetworkManager;
+import com.smartstudio.fbclm.network.NetworkManager;
 import com.smartstudio.fbclm.network.splash.SplashNetworkManagerImpl;
 import com.smartstudio.fbclm.ui.BaseView;
 import com.smartstudio.fbclm.ui.splash.SplashView;

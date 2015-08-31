@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui.navigationdrawer;
+package com.smartstudio.fbclm.controllers.navigationdrawer;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -26,10 +26,10 @@ import android.view.MenuItem;
 import com.smartstudio.fbclm.DataViewActivity;
 import com.smartstudio.fbclm.FbclmApplication;
 import com.smartstudio.fbclm.R;
-import com.smartstudio.fbclm.controller.NavigationDrawerController;
 import com.smartstudio.fbclm.injection.components.NavigationDrawerComponent;
 import com.smartstudio.fbclm.injection.modules.NavigationDrawerModule;
 import com.smartstudio.fbclm.model.League;
+import com.smartstudio.fbclm.ui.navigationdrawer.NavigationDrawerView;
 
 import java.util.List;
 
@@ -55,7 +55,7 @@ public class NavigationDrawerActivity extends DataViewActivity<List<League>> imp
      * Object that managed all the related view logic for the navigation drawer
      **/
     @Inject
-    NavigationDrawerView mView;
+    protected NavigationDrawerView mView;
     /**
      * Dagger component used by this activity
      **/

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.network.splash;
+package com.smartstudio.fbclm.network;
 
 /**
  * TODO Add javadoc documentation
