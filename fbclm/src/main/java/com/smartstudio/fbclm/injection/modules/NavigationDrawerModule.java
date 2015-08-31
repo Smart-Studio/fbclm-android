@@ -25,7 +25,7 @@ import com.smartstudio.fbclm.injection.qualifiers.ForActivity;
 import com.smartstudio.fbclm.injection.qualifiers.ForApplication;
 import com.smartstudio.fbclm.injection.scopes.PerActivity;
 import com.smartstudio.fbclm.model.League;
-import com.smartstudio.fbclm.network.navigationdrawer.NavigationDrawerNetworkManager;
+import com.smartstudio.fbclm.network.NavigationDrawerNetworkManager;
 import com.smartstudio.fbclm.network.NetworkManager;
 import com.smartstudio.fbclm.ui.BaseView;
 import com.smartstudio.fbclm.ui.FbclmView;
