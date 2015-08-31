@@ -25,7 +25,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.smartstudio.fbclm.R;
-import com.smartstudio.fbclm.controller.NavigationDrawerController;
+import com.smartstudio.fbclm.controllers.navigationdrawer.NavigationDrawerController;
 import com.smartstudio.fbclm.injection.qualifiers.ForActivity;
 import com.smartstudio.fbclm.model.League;
 

@@ -14,20 +14,19 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui.splash;
+package com.smartstudio.fbclm.controllers.splash;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.smartstudio.fbclm.DataActivity;
 import com.smartstudio.fbclm.FbclmApplication;
 import com.smartstudio.fbclm.R;
-import com.smartstudio.fbclm.controller.SplashController;
+import com.smartstudio.fbclm.controllers.navigationdrawer.NavigationDrawerActivity;
 import com.smartstudio.fbclm.injection.components.SplashScreenComponent;
 import com.smartstudio.fbclm.injection.modules.SplashScreenModule;
-import com.smartstudio.fbclm.io.PreferencesManager;
 import com.smartstudio.fbclm.model.League;
-import com.smartstudio.fbclm.ui.navigationdrawer.NavigationDrawerActivity;
+import com.smartstudio.fbclm.persistence.PreferencesManager;
+import com.smartstudio.fbclm.ui.splash.SplashView;
 
 import java.util.List;
 
@@ -39,9 +38,9 @@ import javax.inject.Inject;
  */
 public class SplashScreenActivity extends DataActivity<List<League>> implements SplashController {
     @Inject
-    SplashView mView;
+    protected SplashView mView;
     @Inject
-    PreferencesManager mPreferencesManager;
+    protected PreferencesManager mPreferencesManager;
 
     private SplashScreenComponent mComponent;
 

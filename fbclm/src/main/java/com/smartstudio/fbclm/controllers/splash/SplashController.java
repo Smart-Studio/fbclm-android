@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.controller;
+package com.smartstudio.fbclm.controllers.splash;
 
+import com.smartstudio.fbclm.controllers.Controller;
 import com.smartstudio.fbclm.model.League;
 
 import java.util.List;

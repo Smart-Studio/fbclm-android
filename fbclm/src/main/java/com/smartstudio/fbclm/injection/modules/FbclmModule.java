@@ -22,8 +22,8 @@ import android.content.res.Resources;
 
 import com.smartstudio.fbclm.BuildConfig;
 import com.smartstudio.fbclm.injection.qualifiers.ForApplication;
-import com.smartstudio.fbclm.io.PreferencesManager;
-import com.smartstudio.fbclm.io.PreferencesManagerImpl;
+import com.smartstudio.fbclm.persistence.PreferencesManager;
+import com.smartstudio.fbclm.persistence.PreferencesManagerImpl;
 
 import dagger.Module;
 import dagger.Provides;

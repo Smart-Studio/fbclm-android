@@ -10,14 +10,14 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".ui.splash.SplashScreenActivity">
+        <activity android:name=".controllers.splash.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.navigationdrawer.NavigationDrawerActivity" />
+        <activity android:name=".controllers.navigationdrawer.NavigationDrawerActivity" />
 
         <meta-data
             android:name="io.fabric.ApiKey"

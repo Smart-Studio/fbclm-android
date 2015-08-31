@@ -30,6 +30,6 @@ public abstract class BaseViewImpl implements BaseView {
     @CallSuper
     @Override
     public void init(@NonNull View view) {
-        ButterKnife.inject(this, view);
+        ButterKnife.bind(this, view);
     }
 }

@@ -19,9 +19,9 @@ package com.smartstudio.fbclm;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 
-import com.smartstudio.fbclm.controller.Controller;
+import com.smartstudio.fbclm.controllers.Controller;
 import com.smartstudio.fbclm.network.NetworkInfoReceiver;
-import com.smartstudio.fbclm.network.splash.NetworkManager;
+import com.smartstudio.fbclm.network.NetworkManager;
 
 import javax.inject.Inject;
 

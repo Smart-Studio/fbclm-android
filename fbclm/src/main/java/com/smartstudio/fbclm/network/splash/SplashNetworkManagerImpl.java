@@ -16,9 +16,10 @@
 
 package com.smartstudio.fbclm.network.splash;
 
-import com.smartstudio.fbclm.controller.SplashController;
+import com.smartstudio.fbclm.controllers.splash.SplashController;
 import com.smartstudio.fbclm.model.League;
 import com.smartstudio.fbclm.network.NetworkHelper;
+import com.smartstudio.fbclm.network.NetworkManagerImpl;
 
 import java.util.List;
 

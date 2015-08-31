@@ -16,10 +16,10 @@
 
 package com.smartstudio.fbclm.network.navigationdrawer;
 
-import com.smartstudio.fbclm.controller.NavigationDrawerController;
+import com.smartstudio.fbclm.controllers.navigationdrawer.NavigationDrawerController;
 import com.smartstudio.fbclm.model.League;
 import com.smartstudio.fbclm.network.NetworkHelper;
-import com.smartstudio.fbclm.network.splash.NetworkManagerImpl;
+import com.smartstudio.fbclm.network.NetworkManagerImpl;
 
 import java.util.List;
 

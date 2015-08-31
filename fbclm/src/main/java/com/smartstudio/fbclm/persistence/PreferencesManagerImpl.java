@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.io;
+package com.smartstudio.fbclm.persistence;
 
 import android.content.Context;
 import android.content.SharedPreferences;

@@ -35,7 +35,7 @@ import timber.log.Timber;
 public abstract class CommonApplication extends Application {
     private FbclmComponent component;
     @Inject
-    Timber.Tree mTimberTree;
+    protected Timber.Tree mTimberTree;
 
     @Override
     public void onCreate() {

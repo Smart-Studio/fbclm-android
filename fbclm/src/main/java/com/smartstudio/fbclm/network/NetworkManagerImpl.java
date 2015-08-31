@@ -14,10 +14,9 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.network.splash;
+package com.smartstudio.fbclm.network;
 
-import com.smartstudio.fbclm.controller.Controller;
-import com.smartstudio.fbclm.network.NetworkHelper;
+import com.smartstudio.fbclm.controllers.Controller;
 
 import rx.Observable;
 import rx.Subscription;

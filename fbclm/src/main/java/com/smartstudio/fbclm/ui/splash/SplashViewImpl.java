@@ -25,27 +25,34 @@ import com.smartstudio.fbclm.ui.BaseViewImpl;
 
 import javax.inject.Inject;
 
-import butterknife.InjectView;
+import butterknife.Bind;
 
 /**
  * {@link SplashView} implementation
  */
 public class SplashViewImpl extends BaseViewImpl implements SplashView {
+
+    private Resources mResources;
+
+    @Bind(R.id.splash_text_loading)
+    protected TextView mLoadingText;
+
     @Inject
-    Resources mResources;
-
-    @InjectView(R.id.splash_text_loading)
-    TextView mLoadingText;
-
-    @Inject
-    public SplashViewImpl() {
-
+    public SplashViewImpl(Resources resources) {
+        mResources = resources;
     }
 
     @Override
     public void startLoadingAnimation() {
-        AnimationDrawable loadingAnimation = (AnimationDrawable) mResources
-                .getDrawable(R.drawable.animated_ellipsis);
+        AnimationDrawable loadingAnimation;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            loadingAnimation = (AnimationDrawable) mResources
+                    .getDrawable(R.drawable.animated_ellipsis, null);
+        }else{
+            loadingAnimation = (AnimationDrawable) mResources
+                    .getDrawable(R.drawable.animated_ellipsis);
+        }
+
         mLoadingText.setCompoundDrawablesWithIntrinsicBounds(null, null, loadingAnimation, null);
         if (loadingAnimation != null) {
             loadingAnimation.start();
