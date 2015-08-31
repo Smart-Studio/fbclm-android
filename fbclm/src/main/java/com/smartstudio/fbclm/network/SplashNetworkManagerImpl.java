@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.network.splash;
+package com.smartstudio.fbclm.network;
 
 import com.smartstudio.fbclm.controllers.splash.SplashController;
 import com.smartstudio.fbclm.model.League;
@@ -24,6 +24,8 @@ import com.smartstudio.fbclm.network.NetworkManagerImpl;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import rx.functions.Action1;
 
 /**
  * TODO Add javadoc documentation

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.network.navigationdrawer;
+package com.smartstudio.fbclm.network;
 
 import com.smartstudio.fbclm.controllers.navigationdrawer.NavigationDrawerController;
 import com.smartstudio.fbclm.model.League;
