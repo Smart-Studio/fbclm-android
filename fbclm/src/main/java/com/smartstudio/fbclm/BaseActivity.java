@@ -33,7 +33,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * Injected base view
      **/
     @Inject
-    BaseView mView;
+    protected BaseView mView;
 
     @CallSuper
     @Override

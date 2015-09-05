@@ -16,10 +16,13 @@
 
 package com.smartstudio.fbclm.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Represents a league
  **/
-public class League {
+public class League implements Parcelable {
     public static final String ADDECO_PLATA = "ADECCO PLATA T";
     public static final String EBA = "EBA";
     public static final String NACIONAL = "1ª NACIONAL MASCULINA";
@@ -29,9 +32,20 @@ public class League {
     public static final String SUB_20_MAS = "SUB-20 MASCULINA";
     public static final String SUB_20_FEM = "SUB-20 FEMENINA";
     public static final String JUNIOR_MAS_ESPECIAL = "JUNIOR MASCULINO ESPECIAL";
-    public static final String JUNIOR_FEM ="JUNIOR FEMENINO";
+    public static final String JUNIOR_FEM = "JUNIOR FEMENINO";
     public static final String JUNIOR_MAS_PREFERENTE = "JUNIOR MASCULINO PREFERENTE";
 
+    public static final Creator<League> CREATOR = new Creator<League>() {
+        @Override
+        public League createFromParcel(Parcel in) {
+            return new League(in);
+        }
+
+        @Override
+        public League[] newArray(int size) {
+            return new League[size];
+        }
+    };
 
     private int id;
     private String name;
@@ -40,11 +54,27 @@ public class League {
 
     }
 
+    protected League(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+    }
+
     public int getId() {
         return id;
     }
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(name);
     }
 }

@@ -31,9 +31,9 @@ import javax.inject.Inject;
 public abstract class DataActivity<T> extends BaseActivity implements Controller<T> {
 
     @Inject
-    NetworkManager mNetworkManager;
+    protected NetworkManager mNetworkManager;
     @Inject
-    NetworkInfoReceiver mNetworkInfoReceiver;
+    protected NetworkInfoReceiver mNetworkInfoReceiver;
 
     @CallSuper
     @Override

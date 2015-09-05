@@ -42,7 +42,8 @@ public interface NavigationDrawerController extends Controller<List<League>> {
     /**
      * Manages the event where the user selects a league in the navigation drawer
      *
-     * @param league Selected league
+     * @param league   Selected league
+     * @param position Selected league position
      **/
-    void onLeagueClicked(League league);
+    void onLeagueSelected(League league, int position);
 }

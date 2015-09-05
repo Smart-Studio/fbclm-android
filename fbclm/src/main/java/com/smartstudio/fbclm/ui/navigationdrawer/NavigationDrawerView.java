@@ -37,9 +37,17 @@ public interface NavigationDrawerView extends FbclmView<List<League>> {
     void onMenuItemClicked(@NonNull MenuItem item);
 
     /**
-     * Called whe na league has been selected in the navigation drawer
+     * Called when a league has been selected in the navigation drawer
      *
      * @param league Selected league
      **/
     void onLeagueSelected(@NonNull League league);
+
+    /**
+     * Restores the state when device is rotated or the OS kills your app
+     *
+     * @param leagues                Latest loaded leagues
+     * @param selectedLeaguePosition Latest selected position
+     **/
+    void restoreState(@NonNull List<League> leagues, int selectedLeaguePosition);
 }

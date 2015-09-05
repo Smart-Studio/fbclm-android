@@ -17,6 +17,7 @@
 package com.smartstudio.fbclm.ui.navigationdrawer;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -35,6 +36,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * TODO Add javadoc documentation
@@ -47,11 +49,11 @@ public class NavigationDrawerViewImpl extends BaseViewImpl implements Navigation
     @Bind(R.id.drawer_layout)
     protected DrawerLayout mDrawerLayout;
 
-    @Bind(R.id.toolbar)
-    protected Toolbar mToolbar;
-
     @Bind(R.id.drawer_list)
     protected RecyclerView mDrawerList;
+
+    @Nullable
+    private ActionBar mActionBar;
 
     @Inject
     public NavigationDrawerViewImpl(NavigationDrawerController controller, NavigationDrawerAdapter adapter,
@@ -64,10 +66,11 @@ public class NavigationDrawerViewImpl extends BaseViewImpl implements Navigation
     @Override
     public void init(@NonNull View view) {
         super.init(view);
-        ActionBar actionBar = mController.setUpToolbar(mToolbar);
-        if (actionBar != null) {
-            actionBar.setHomeAsUpIndicator(R.mipmap.ic_menu_white_24dp);
-            actionBar.setDisplayHomeAsUpEnabled(true);
+        Toolbar toolbar = ButterKnife.findById(view, R.id.toolbar);
+        mActionBar = mController.setUpToolbar(toolbar);
+        if (mActionBar != null) {
+            mActionBar.setHomeAsUpIndicator(R.mipmap.ic_menu_white_24dp);
+            mActionBar.setDisplayHomeAsUpEnabled(true);
         }
 
         mDrawerList.setLayoutManager(mLayoutManager);
@@ -76,6 +79,10 @@ public class NavigationDrawerViewImpl extends BaseViewImpl implements Navigation
 
     @Override
     public void showData(List<League> leagues) {
+        if (mAdapter.getItemCount() == 0 && !leagues.isEmpty()) {
+            mController.onLeagueSelected(leagues.get(0), 0);
+        }
+
         mAdapter.setLeagues(leagues);
     }
 
@@ -92,6 +99,23 @@ public class NavigationDrawerViewImpl extends BaseViewImpl implements Navigation
     @Override
     public void onLeagueSelected(@NonNull League league) {
         mDrawerLayout.closeDrawers();
-        mToolbar.setTitle(league.getName());
+        setTitle(league.getName());
+    }
+
+    @Override
+    public void restoreState(@NonNull List<League> leagues, int selectedLeaguePosition) {
+        mAdapter.restoreState(leagues, selectedLeaguePosition);
+        setTitle(leagues.get(selectedLeaguePosition).getName());
+    }
+
+    /**
+     * Sets action bar title
+     *
+     * @param title Title to be set in the action bar
+     **/
+    private void setTitle(CharSequence title) {
+        if (mActionBar != null) {
+            mActionBar.setTitle(title);
+        }
     }
 }

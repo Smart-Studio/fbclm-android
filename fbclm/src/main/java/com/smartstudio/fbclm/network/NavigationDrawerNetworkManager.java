@@ -18,8 +18,6 @@ package com.smartstudio.fbclm.network;
 
 import com.smartstudio.fbclm.controllers.navigationdrawer.NavigationDrawerController;
 import com.smartstudio.fbclm.model.League;
-import com.smartstudio.fbclm.network.NetworkHelper;
-import com.smartstudio.fbclm.network.NetworkManagerImpl;
 
 import java.util.List;
 
