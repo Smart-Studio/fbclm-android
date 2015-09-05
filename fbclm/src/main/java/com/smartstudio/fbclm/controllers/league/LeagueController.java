@@ -14,22 +14,10 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm;
-
-import com.smartstudio.fbclm.ui.FbclmView;
-
-import javax.inject.Inject;
+package com.smartstudio.fbclm.controllers.league;
 
 /**
  * TODO Add a class header comment
  */
-public abstract class DataViewActivity<T> extends DataActivity<T> {
-
-    @Inject
-    protected FbclmView<T> mView;
-
-    @Override
-    public void onDataLoaded(T data) {
-        mView.showData(data);
-    }
+public interface LeagueController {
 }

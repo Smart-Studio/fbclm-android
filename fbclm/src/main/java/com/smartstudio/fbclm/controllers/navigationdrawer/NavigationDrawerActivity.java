@@ -18,7 +18,12 @@ package com.smartstudio.fbclm.controllers.navigationdrawer;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -26,11 +31,13 @@ import android.view.MenuItem;
 import com.smartstudio.fbclm.DataViewActivity;
 import com.smartstudio.fbclm.FbclmApplication;
 import com.smartstudio.fbclm.R;
+import com.smartstudio.fbclm.controllers.league.LeagueFragment;
 import com.smartstudio.fbclm.injection.components.NavigationDrawerComponent;
 import com.smartstudio.fbclm.injection.modules.NavigationDrawerModule;
 import com.smartstudio.fbclm.model.League;
 import com.smartstudio.fbclm.ui.navigationdrawer.NavigationDrawerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -39,6 +46,8 @@ import javax.inject.Inject;
  * Activity that displays a navigation drawer with the list of available leagues
  */
 public class NavigationDrawerActivity extends DataViewActivity<List<League>> implements NavigationDrawerController {
+    private static final String ARG_LEAGUES = "leagues";
+    private static final String ARG_SELECTED_LEAGUE_POSITION = "selected_league_position";
 
     /**
      * Launches a new {@link NavigationDrawerActivity}
@@ -52,7 +61,7 @@ public class NavigationDrawerActivity extends DataViewActivity<List<League>> imp
     }
 
     /**
-     * Object that managed all the related view logic for the navigation drawer
+     * Object that manages all the related view logic for the navigation drawer
      **/
     @Inject
     protected NavigationDrawerView mView;
@@ -60,6 +69,31 @@ public class NavigationDrawerActivity extends DataViewActivity<List<League>> imp
      * Dagger component used by this activity
      **/
     private NavigationDrawerComponent mComponent;
+
+    /**
+     * List of available leagues
+     **/
+    @Nullable
+    private List<League> mLeagues;
+    /**
+     * Position of the selected league in the list
+     **/
+    private int mSelectedLeaguePosition;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            mLeagues = savedInstanceState.getParcelableArrayList(ARG_LEAGUES);
+            mSelectedLeaguePosition = savedInstanceState.getInt(ARG_SELECTED_LEAGUE_POSITION);
+
+            if (mLeagues != null) {
+                mView.restoreState(mLeagues, mSelectedLeaguePosition);
+                showLeagueFragment(mLeagues.get(mSelectedLeaguePosition));
+            }
+        }
+    }
 
     @Override
     protected void initComponent() {
@@ -86,19 +120,46 @@ public class NavigationDrawerActivity extends DataViewActivity<List<League>> imp
     }
 
     @Override
+    public void onDataLoaded(List<League> leagues) {
+        super.onDataLoaded(leagues);
+        mLeagues = leagues;
+    }
+
+    @Override
     public ActionBar setUpToolbar(@NonNull Toolbar toolbar) {
         setSupportActionBar(toolbar);
         return getSupportActionBar();
     }
 
     @Override
-    public void onLeagueClicked(League league) {
+    public void onLeagueSelected(League league, int position) {
+        mSelectedLeaguePosition = position;
         mView.onLeagueSelected(league);
+        showLeagueFragment(league);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         mView.onMenuItemClicked(item);
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList(ARG_LEAGUES, (ArrayList<? extends Parcelable>) mLeagues);
+        outState.putInt(ARG_SELECTED_LEAGUE_POSITION, mSelectedLeaguePosition);
+    }
+
+    /**
+     * Creates a new fragment for the selected league
+     *
+     * @param league Selected league
+     **/
+    private void showLeagueFragment(League league) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.replace(R.id.content_frame, LeagueFragment.newInstance(league.getId()));
+        ft.commit();
     }
 }

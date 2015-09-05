@@ -45,12 +45,20 @@ public class NavigationDrawerAdapterImpl extends NavigationDrawerAdapter {
     @Inject
     public NavigationDrawerAdapterImpl(LeagueViewHolderHelper viewHolderHelper) {
         mViewHolderHelper = viewHolderHelper;
+        mViewHolderHelper.setAdapter(this);
+        setHasStableIds(true);
     }
 
     @Override
     public void setLeagues(List<League> leagues) {
         mLeagues = leagues;
         notifyDataSetChanged();
+    }
+
+    @Override
+    public void restoreState(List<League> leagues, int selectedLeague) {
+        mViewHolderHelper.setSelectedPosition(selectedLeague);
+        setLeagues(leagues);
     }
 
     @Override
@@ -67,5 +75,10 @@ public class NavigationDrawerAdapterImpl extends NavigationDrawerAdapter {
     @Override
     public int getItemCount() {
         return mLeagues == null ? 0 : mLeagues.size();
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return mLeagues.get(position).getId();
     }
 }

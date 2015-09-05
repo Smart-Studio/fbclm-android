@@ -33,4 +33,6 @@ public abstract class NavigationDrawerAdapter extends RecyclerView.Adapter<Leagu
      * @param leagues List of available leagues
      **/
     public abstract void setLeagues(List<League> leagues);
+
+    public abstract void restoreState(List<League> leagues, int selectedLeague);
 }

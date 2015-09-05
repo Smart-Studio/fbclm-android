@@ -44,6 +44,7 @@ public class LeagueViewHolderHelperImpl implements LeagueViewHolderHelper, View.
      * Controller to delegate the event where the user selects a league to
      **/
     private final NavigationDrawerController mController;
+    private NavigationDrawerAdapter mAdapter;
     /**
      * Current position of the selected league
      **/
@@ -58,6 +59,15 @@ public class LeagueViewHolderHelperImpl implements LeagueViewHolderHelper, View.
                                       NavigationDrawerController controller) {
         mLayoutInflater = LayoutInflater.from(context);
         mController = controller;
+    }
+
+    @Override
+    public void setAdapter(@NonNull NavigationDrawerAdapter adapter) {
+        mAdapter = adapter;
+    }
+
+    public void setSelectedPosition(int selectedPosition) {
+        mSelectedPosition = selectedPosition;
     }
 
     @Override
@@ -82,10 +92,9 @@ public class LeagueViewHolderHelperImpl implements LeagueViewHolderHelper, View.
     @Override
     public void onClick(View view) {
         final LeagueViewHolder viewHolder = (LeagueViewHolder) view.getTag(R.id.view_holder_tag);
-        final RecyclerView recyclerView = (RecyclerView) view.getParent();
         mSelectedPosition = viewHolder.getAdapterPosition();
-        recyclerView.getAdapter().notifyDataSetChanged();
-        mController.onLeagueClicked((League) view.getTag(R.id.league_tag));
+        mAdapter.notifyDataSetChanged();
+        mController.onLeagueSelected((League) view.getTag(R.id.league_tag), mSelectedPosition);
     }
 
 
@@ -126,7 +135,6 @@ public class LeagueViewHolderHelperImpl implements LeagueViewHolderHelper, View.
             default:
                 return R.mipmap.ic_jccm;
         }
-
 
     }
 }

@@ -24,5 +24,7 @@ import com.smartstudio.fbclm.ui.ViewHolderHelper;
  * given a {@link League}
  */
 public interface LeagueViewHolderHelper extends ViewHolderHelper<LeagueViewHolder, League> {
+    void setAdapter(NavigationDrawerAdapter adapter);
 
+    void setSelectedPosition(int selectedPosition);
 }
