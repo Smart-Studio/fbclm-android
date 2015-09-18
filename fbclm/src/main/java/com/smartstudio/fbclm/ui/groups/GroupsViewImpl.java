@@ -35,7 +35,7 @@ import butterknife.Bind;
  * TODO Add javadoc documentation
  */
 public class GroupsViewImpl extends BaseViewImpl implements GroupsView {
-    @Bind(R.id.sliding_tabs)
+    @Bind(R.id.sliding_tabs_groups)
     protected TabLayout mTabLayout;
 
     @Bind(R.id.view_pager_groups)
