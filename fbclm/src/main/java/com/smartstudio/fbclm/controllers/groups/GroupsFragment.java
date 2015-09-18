@@ -27,12 +27,8 @@ import com.smartstudio.fbclm.controllers.navigationdrawer.NavigationDrawerContro
 import com.smartstudio.fbclm.injection.components.GroupsComponent;
 import com.smartstudio.fbclm.injection.components.NavigationDrawerComponent;
 import com.smartstudio.fbclm.injection.modules.GroupsModule;
-import com.smartstudio.fbclm.model.Group;
 import com.smartstudio.fbclm.model.League;
 import com.smartstudio.fbclm.ui.groups.GroupsView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -74,24 +70,19 @@ public class GroupsFragment extends BaseFragment implements GroupsController {
 
 
     @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        League league = getArguments().getParcelable(ARGS_LEAGUE);
+        mView.showGroups(league.getGroups());
+    }
+
+    @Override
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
         if (savedInstanceState != null) {
             int selectedGroupPosition = savedInstanceState.getInt(ARGS_GROUP_POSITION);
             mView.restoreSelectedGroupPosition(selectedGroupPosition);
         }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        List<Group> groupList = new ArrayList<>();
-        Group group = new Group();
-        group.setName("NAME");
-        groupList.add(group);
-        groupList.add(group);
-        groupList.add(group);
-        mView.showGroups(groupList);
     }
 
     @Override

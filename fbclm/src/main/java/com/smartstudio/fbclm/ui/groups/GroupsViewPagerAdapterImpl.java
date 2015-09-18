@@ -16,10 +16,16 @@
 
 package com.smartstudio.fbclm.ui.groups;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
+import com.smartstudio.fbclm.R;
 import com.smartstudio.fbclm.model.Group;
 
 import java.util.List;
@@ -45,7 +51,7 @@ public class GroupsViewPagerAdapterImpl extends GroupsViewPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return new Fragment();
+        return new PlaceholderFragment();
     }
 
     @Override
@@ -56,6 +62,15 @@ public class GroupsViewPagerAdapterImpl extends GroupsViewPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         return mGroups.get(position).getName();
+    }
+
+
+    public static class PlaceholderFragment extends Fragment {
+        @Nullable
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            return inflater.inflate(R.layout.activity_splash, container, false);
+        }
     }
 
 }
