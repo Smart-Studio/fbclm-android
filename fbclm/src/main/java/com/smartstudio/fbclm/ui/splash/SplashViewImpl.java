@@ -34,7 +34,7 @@ public class SplashViewImpl extends BaseViewImpl implements SplashView {
 
     private Resources mResources;
 
-    @Bind(R.id.splash_text_loading)
+    @Bind(R.id.txt_splash_loading)
     protected TextView mLoadingText;
 
     @Inject
