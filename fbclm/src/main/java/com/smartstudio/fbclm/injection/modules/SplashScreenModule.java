@@ -17,6 +17,7 @@
 package com.smartstudio.fbclm.injection.modules;
 
 import com.smartstudio.fbclm.controllers.splash.SplashController;
+import com.smartstudio.fbclm.injection.qualifiers.ForActivity;
 import com.smartstudio.fbclm.injection.scopes.PerActivity;
 import com.smartstudio.fbclm.network.NetworkManager;
 import com.smartstudio.fbclm.network.SplashNetworkManagerImpl;
@@ -71,6 +72,7 @@ public class SplashScreenModule extends BaseModule {
      **/
     @Provides
     @PerActivity
+    @ForActivity
     BaseView provideFbclmView(SplashView view) {
         return view;
     }

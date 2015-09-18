@@ -19,7 +19,7 @@ package com.smartstudio.fbclm;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 
-import com.smartstudio.fbclm.controllers.Controller;
+import com.smartstudio.fbclm.controllers.DataController;
 import com.smartstudio.fbclm.network.NetworkInfoReceiver;
 import com.smartstudio.fbclm.network.NetworkManager;
 
@@ -28,7 +28,7 @@ import javax.inject.Inject;
 /**
  * TODO Add javadoc documentation
  */
-public abstract class DataActivity<T> extends BaseActivity implements Controller<T> {
+public abstract class DataActivity<T> extends BaseActivity implements DataController<T> {
 
     @Inject
     protected NetworkManager mNetworkManager;

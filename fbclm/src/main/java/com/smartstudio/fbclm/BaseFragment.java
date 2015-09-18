@@ -14,52 +14,64 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.controllers.league;
+package com.smartstudio.fbclm;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.support.annotation.CallSuper;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.smartstudio.fbclm.R;
+import com.smartstudio.fbclm.injection.qualifiers.ForFragment;
+import com.smartstudio.fbclm.ui.BaseView;
+
+import javax.inject.Inject;
 
 /**
  * TODO Add a class header comment
  */
-public class LeagueFragment extends Fragment {
-    private static final String ARG_SEASON_ID = "season_id";
+public abstract class BaseFragment extends Fragment {
 
-    @NonNull
-    public static LeagueFragment newInstance(int leagueId) {
-        LeagueFragment fragment = new LeagueFragment();
-        Bundle args = new Bundle();
-        args.putInt(ARG_SEASON_ID, leagueId);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    /**
+     * Injected base view
+     **/
+    @ForFragment
+    @Inject
+    protected BaseView mView;
 
-    private int mLeagueId;
-
+    @CallSuper
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mLeagueId = getArguments().getInt(ARG_SEASON_ID);
+        initComponent();
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_league, container, false);
+        return inflater.inflate(getLayoutResourceId(), container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        TextView textView = (TextView) view.findViewById(R.id.text);
-        textView.setText("LEAGUE: " + mLeagueId);
+        mView.init(view);
     }
+
+    /**
+     * Initialise the corresponding component
+     */
+    protected abstract void initComponent();
+
+
+    /**
+     * Gets the layout resource id to be set in the activity
+     *
+     * @return Layout resource id to be set in the activity
+     **/
+    @LayoutRes
+    protected abstract int getLayoutResourceId();
 }

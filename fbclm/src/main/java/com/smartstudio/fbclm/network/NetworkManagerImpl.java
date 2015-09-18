@@ -16,7 +16,7 @@
 
 package com.smartstudio.fbclm.network;
 
-import com.smartstudio.fbclm.controllers.Controller;
+import com.smartstudio.fbclm.controllers.DataController;
 
 import rx.Observable;
 import rx.Subscription;
@@ -28,11 +28,11 @@ import timber.log.Timber;
  * TODO Add javadoc documentation
  */
 public abstract class NetworkManagerImpl<T> implements NetworkManager {
-    protected final Controller<T> mController;
+    protected final DataController<T> mController;
     protected final NetworkHelper mNetworkHelper;
     private Subscription mSubscription;
 
-    public NetworkManagerImpl(Controller<T> controller, NetworkHelper networkHelper) {
+    public NetworkManagerImpl(DataController<T> controller, NetworkHelper networkHelper) {
         mController = controller;
         mNetworkHelper = networkHelper;
     }

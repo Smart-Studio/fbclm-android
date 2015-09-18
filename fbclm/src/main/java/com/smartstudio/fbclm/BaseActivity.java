@@ -21,6 +21,7 @@ import android.support.annotation.CallSuper;
 import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
 
+import com.smartstudio.fbclm.injection.qualifiers.ForActivity;
 import com.smartstudio.fbclm.ui.BaseView;
 
 import javax.inject.Inject;
@@ -33,13 +34,16 @@ public abstract class BaseActivity extends AppCompatActivity {
      * Injected base view
      **/
     @Inject
+    @ForActivity
     protected BaseView mView;
 
     @CallSuper
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        //Called before super.onCreate so the activity component is available when the fragment are
+        //initialised on super.onCreate()
         initComponent();
+        super.onCreate(savedInstanceState);
         setContentView(getLayoutResourceId());
         mView.init(findViewById(android.R.id.content));
     }

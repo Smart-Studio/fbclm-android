@@ -21,7 +21,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 
-import com.smartstudio.fbclm.controllers.Controller;
+import com.smartstudio.fbclm.controllers.DataController;
+import com.smartstudio.fbclm.injection.components.NavigationDrawerComponent;
 import com.smartstudio.fbclm.model.League;
 
 import java.util.List;
@@ -29,7 +30,7 @@ import java.util.List;
 /**
  * Interface definition for the controller used by {@link NavigationDrawerActivity}
  */
-public interface NavigationDrawerController extends Controller<List<League>> {
+public interface NavigationDrawerController extends DataController<List<League>> {
     /**
      * Sets up the toolbar as the activity action bar
      *
@@ -46,4 +47,6 @@ public interface NavigationDrawerController extends Controller<List<League>> {
      * @param position Selected league position
      **/
     void onLeagueSelected(League league, int position);
+
+    NavigationDrawerComponent getComponent();
 }

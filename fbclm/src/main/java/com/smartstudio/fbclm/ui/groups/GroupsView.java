@@ -14,18 +14,20 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.injection.qualifiers;
+package com.smartstudio.fbclm.ui.groups;
 
-import java.lang.annotation.Retention;
+import com.smartstudio.fbclm.model.Group;
+import com.smartstudio.fbclm.ui.BaseView;
 
-import javax.inject.Qualifier;
-
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import java.util.List;
 
 /**
- * Dagger qualifier used to inject object specific to an activity
- **/
-@Qualifier
-@Retention(RUNTIME)
-public @interface ForActivity {
+ * TODO Add a class header comment
+ */
+public interface GroupsView extends BaseView {
+    void showGroups(List<Group> groups);
+
+    void restoreSelectedGroupPosition(int position);
+
+    int getSelectedGroupPosition();
 }

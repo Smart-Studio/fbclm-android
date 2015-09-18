@@ -14,10 +14,21 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.controllers.league;
+package com.smartstudio.fbclm.controllers;
 
 /**
- * TODO Add a class header comment
+ * Base controller interface offering callbacks for the data loading process
  */
-public interface LeagueController {
+public interface DataController<T> {
+    /**
+     * Callback method that notifies when the required data has been loaded
+     *
+     * @param data Loaded data
+     **/
+    void onDataLoaded(T data);
+
+    /**
+     * Callback method that notifies of ocurred
+     **/
+    void onDataError();
 }

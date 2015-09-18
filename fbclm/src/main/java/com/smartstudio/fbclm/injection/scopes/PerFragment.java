@@ -14,18 +14,19 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.injection.qualifiers;
+package com.smartstudio.fbclm.injection.scopes;
 
 import java.lang.annotation.Retention;
 
-import javax.inject.Qualifier;
+import javax.inject.Scope;
 
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * Dagger qualifier used to inject object specific to an activity
- **/
-@Qualifier
+ * Dagger fragment scope. Used in fragment modules to indicate that the scope of the injected object
+ * is a fragment
+ */
+@Scope
 @Retention(RUNTIME)
-public @interface ForActivity {
+public @interface PerFragment {
 }

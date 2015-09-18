@@ -16,7 +16,7 @@
 
 package com.smartstudio.fbclm.controllers.splash;
 
-import com.smartstudio.fbclm.controllers.Controller;
+import com.smartstudio.fbclm.controllers.DataController;
 import com.smartstudio.fbclm.model.League;
 
 import java.util.List;
@@ -24,5 +24,5 @@ import java.util.List;
 /**
  * TODO Add javadoc documentation
  */
-public interface SplashController extends Controller<List<League>> {
+public interface SplashController extends DataController<List<League>> {
 }

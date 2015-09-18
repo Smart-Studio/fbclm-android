@@ -82,6 +82,7 @@ public class NavigationDrawerModule extends BaseModule {
 
     @Provides
     @PerActivity
+    @ForActivity
     BaseView provideBaseView(NavigationDrawerView view) {
         return view;
     }

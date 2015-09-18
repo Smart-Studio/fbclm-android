@@ -19,6 +19,9 @@ package com.smartstudio.fbclm.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Represents a league
  **/
@@ -49,6 +52,7 @@ public class League implements Parcelable {
 
     private int id;
     private String name;
+    private List<Group> groups;
 
     public League() {
 
@@ -57,6 +61,10 @@ public class League implements Parcelable {
     protected League(Parcel in) {
         id = in.readInt();
         name = in.readString();
+        if (groups == null) {
+            groups = new ArrayList<>();
+        }
+        in.readTypedList(groups, Group.CREATOR);
     }
 
     public int getId() {
@@ -65,6 +73,14 @@ public class League implements Parcelable {
 
     public String getName() {
         return name;
+    }
+
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public boolean hasGroups(){
+        return groups != null && !groups.isEmpty();
     }
 
     @Override
@@ -76,5 +92,6 @@ public class League implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(id);
         dest.writeString(name);
+        dest.writeTypedList(groups);
     }
 }

@@ -23,7 +23,7 @@ import javax.inject.Qualifier;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * Dagger qualifier used to inject an application {@link android.content.Context}
+ * Dagger qualifier used to inject object specific to the application
  **/
 @Qualifier
 @Retention(RUNTIME)
