@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smart Studio.
+ * Copyright 2015 Smart Studio
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,25 +16,18 @@
 
 package com.smartstudio.fbclm.injection.components;
 
-import com.smartstudio.fbclm.CommonApplication;
-import com.smartstudio.fbclm.injection.modules.FbclmModule;
+import com.smartstudio.fbclm.controllers.groups.GroupsFragment;
 import com.smartstudio.fbclm.injection.modules.GroupsModule;
-import com.smartstudio.fbclm.injection.modules.NavigationDrawerModule;
-import com.smartstudio.fbclm.injection.modules.SplashScreenModule;
-import com.smartstudio.fbclm.injection.scopes.PerApplication;
+import com.smartstudio.fbclm.injection.scopes.PerFragment;
 
 import dagger.Component;
+import dagger.Subcomponent;
 
 /**
- * TODO Add a class header comment
+ * TODO Add javadoc documentation
  */
-
-@PerApplication
-@Component(modules = FbclmModule.class)
-public interface FbclmComponent {
-    SplashScreenComponent plus(SplashScreenModule module);
-
-    NavigationDrawerComponent plus(NavigationDrawerModule module);
-
-    void injectApplication(CommonApplication application);
+@PerFragment
+@Subcomponent(modules = {GroupsModule.class})
+public interface GroupsComponent {
+    void inject(GroupsFragment fragment);
 }

@@ -14,18 +14,24 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.injection.qualifiers;
+package com.smartstudio.fbclm.ui.groups;
 
-import java.lang.annotation.Retention;
+import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
-import javax.inject.Qualifier;
+import com.smartstudio.fbclm.model.Group;
 
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import java.util.List;
 
 /**
- * Dagger qualifier used to inject object specific to an activity
- **/
-@Qualifier
-@Retention(RUNTIME)
-public @interface ForActivity {
+ * TODO Add javadoc documentation
+ */
+public abstract class GroupsViewPagerAdapter extends FragmentStatePagerAdapter {
+
+    public GroupsViewPagerAdapter(FragmentManager fm) {
+        super(fm);
+    }
+
+    public abstract void setGroups(@NonNull List<Group> groups);
 }

@@ -49,7 +49,7 @@ public class NavigationDrawerViewImpl extends BaseViewImpl implements Navigation
     @Bind(R.id.drawer_layout)
     protected DrawerLayout mDrawerLayout;
 
-    @Bind(R.id.drawer_list)
+    @Bind(R.id.list_drawer)
     protected RecyclerView mDrawerList;
 
     @Nullable

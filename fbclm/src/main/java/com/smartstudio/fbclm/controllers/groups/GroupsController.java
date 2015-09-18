@@ -14,18 +14,10 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.injection.qualifiers;
-
-import java.lang.annotation.Retention;
-
-import javax.inject.Qualifier;
-
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
+package com.smartstudio.fbclm.controllers.groups;
 
 /**
- * Dagger qualifier used to inject object specific to an activity
- **/
-@Qualifier
-@Retention(RUNTIME)
-public @interface ForActivity {
+ * TODO Add a class header comment
+ */
+public interface GroupsController {
 }

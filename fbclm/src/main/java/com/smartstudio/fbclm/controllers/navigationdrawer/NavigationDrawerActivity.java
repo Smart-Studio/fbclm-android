@@ -31,7 +31,7 @@ import android.view.MenuItem;
 import com.smartstudio.fbclm.DataViewActivity;
 import com.smartstudio.fbclm.FbclmApplication;
 import com.smartstudio.fbclm.R;
-import com.smartstudio.fbclm.controllers.league.LeagueFragment;
+import com.smartstudio.fbclm.controllers.groups.GroupsFragment;
 import com.smartstudio.fbclm.injection.components.NavigationDrawerComponent;
 import com.smartstudio.fbclm.injection.modules.NavigationDrawerModule;
 import com.smartstudio.fbclm.model.League;
@@ -90,7 +90,6 @@ public class NavigationDrawerActivity extends DataViewActivity<List<League>> imp
 
             if (mLeagues != null) {
                 mView.restoreState(mLeagues, mSelectedLeaguePosition);
-                showLeagueFragment(mLeagues.get(mSelectedLeaguePosition));
             }
         }
     }
@@ -139,6 +138,11 @@ public class NavigationDrawerActivity extends DataViewActivity<List<League>> imp
     }
 
     @Override
+    public NavigationDrawerComponent getComponent() {
+        return mComponent;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         mView.onMenuItemClicked(item);
         return super.onOptionsItemSelected(item);
@@ -159,7 +163,11 @@ public class NavigationDrawerActivity extends DataViewActivity<List<League>> imp
     private void showLeagueFragment(League league) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.replace(R.id.content_frame, LeagueFragment.newInstance(league.getId()));
+        if (league.hasGroups()) {
+            ft.replace(R.id.content_frame, GroupsFragment.newInstance(league));
+        } else {
+            ft.replace(R.id.content_frame, GroupsFragment.newInstance(league));
+        }
         ft.commit();
     }
 }

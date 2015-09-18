@@ -14,13 +14,18 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.controllers;
+package com.smartstudio.fbclm.injection.qualifiers;
+
+import java.lang.annotation.Retention;
+
+import javax.inject.Qualifier;
+
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * TODO Add javadoc documentation
- */
-public interface Controller<T> {
-    void onDataLoaded(T data);
-
-    void onDataError();
+ * Dagger qualifier used to inject object specific to a fragment
+ **/
+@Qualifier
+@Retention(RUNTIME)
+public @interface ForFragment {
 }
