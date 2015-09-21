@@ -38,9 +38,9 @@ import javax.inject.Inject;
  */
 public class SplashScreenActivity extends DataActivity<List<League>> implements SplashController {
     @Inject
-    protected SplashView mView;
+    SplashView mView;
     @Inject
-    protected PreferencesManager mPreferencesManager;
+    PreferencesManager mPreferencesManager;
 
     private SplashScreenComponent mComponent;
 
@@ -59,7 +59,7 @@ public class SplashScreenActivity extends DataActivity<List<League>> implements 
 
     @Override
     protected void initComponent() {
-        mComponent = FbclmApplication.get(this)
+        mComponent = FbclmApplication.get()
                 .getComponent()
                 .plus(new SplashScreenModule(this));
         mComponent.inject(this);

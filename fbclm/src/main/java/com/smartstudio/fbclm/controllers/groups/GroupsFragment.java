@@ -27,8 +27,11 @@ import com.smartstudio.fbclm.controllers.navigationdrawer.NavigationDrawerContro
 import com.smartstudio.fbclm.injection.components.GroupsComponent;
 import com.smartstudio.fbclm.injection.components.NavigationDrawerComponent;
 import com.smartstudio.fbclm.injection.modules.GroupsModule;
-import com.smartstudio.fbclm.model.League;
+import com.smartstudio.fbclm.model.Group;
 import com.smartstudio.fbclm.ui.groups.GroupsView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -36,12 +39,12 @@ import javax.inject.Inject;
  * TODO Add a class header comment
  */
 public class GroupsFragment extends BaseFragment implements GroupsController {
-    private static final String ARGS_LEAGUE = "league";
+    private static final String ARGS_GROUPS = "groups";
     private static final String ARGS_GROUP_POSITION = "group_position";
 
-    public static GroupsFragment newInstance(League league) {
+    public static GroupsFragment newInstance(List<Group> groups) {
         Bundle args = new Bundle();
-        args.putParcelable(ARGS_LEAGUE, league);
+        args.putParcelableArrayList(ARGS_GROUPS, (ArrayList<Group>) groups);
 
         GroupsFragment fragment = new GroupsFragment();
         fragment.setArguments(args);
@@ -49,7 +52,7 @@ public class GroupsFragment extends BaseFragment implements GroupsController {
     }
 
     @Inject
-    protected GroupsView mView;
+    GroupsView mView;
 
     private GroupsComponent mComponent;
 
@@ -72,8 +75,8 @@ public class GroupsFragment extends BaseFragment implements GroupsController {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        League league = getArguments().getParcelable(ARGS_LEAGUE);
-        mView.showGroups(league.getGroups());
+        List<Group> groups = getArguments().getParcelableArrayList(ARGS_GROUPS);
+        mView.showGroups(groups);
     }
 
     @Override

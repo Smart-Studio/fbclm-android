@@ -40,7 +40,7 @@ public abstract class BaseFragment extends Fragment {
      **/
     @ForFragment
     @Inject
-    protected BaseView mView;
+    BaseView mView;
 
     @CallSuper
     @Override

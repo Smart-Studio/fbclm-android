@@ -26,7 +26,7 @@ import javax.inject.Inject;
 public abstract class DataViewActivity<T> extends DataActivity<T> {
 
     @Inject
-    protected FbclmView<T> mView;
+    FbclmView<T> mView;
 
     @Override
     public void onDataLoaded(T data) {

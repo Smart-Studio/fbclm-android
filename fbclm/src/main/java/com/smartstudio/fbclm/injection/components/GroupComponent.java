@@ -14,22 +14,19 @@
  * limitations under the License.
  */
 
-package com.smartstudio.fbclm.ui.groups;
+package com.smartstudio.fbclm.injection.components;
 
-import android.support.annotation.NonNull;
+import com.smartstudio.fbclm.controllers.groups.GroupFragment;
+import com.smartstudio.fbclm.injection.modules.GroupModule;
+import com.smartstudio.fbclm.injection.scopes.PerFragment;
 
-import com.smartstudio.fbclm.model.Group;
-import com.smartstudio.fbclm.ui.BaseView;
-
-import java.util.List;
+import dagger.Subcomponent;
 
 /**
- * TODO Add a class header comment
+ * TODO Add javadoc documentation
  */
-public interface GroupsView extends BaseView {
-    void showGroups(@NonNull List<Group> groups);
-
-    void restoreSelectedGroupPosition(int position);
-
-    int getSelectedGroupPosition();
+@PerFragment
+@Subcomponent(modules = {GroupModule.class})
+public interface GroupComponent {
+    void inject(GroupFragment fragment);
 }

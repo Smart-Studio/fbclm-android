@@ -24,7 +24,7 @@ import javax.inject.Inject;
 /**
  * TODO Add javadoc documentation
  */
-public class FbclmOkHttpClient extends CommonOkHttpClient {
+public class FbclmOkHttpClient extends BaseOkHttpClient {
     /**
      * Creates an instance of FbclmOkHttpClient
      *

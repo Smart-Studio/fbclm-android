@@ -16,11 +16,9 @@
 
 package com.smartstudio.fbclm.injection.modules;
 
-import android.content.Context;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 
-import com.smartstudio.fbclm.injection.qualifiers.ForActivity;
 import com.smartstudio.fbclm.injection.qualifiers.ForFragment;
 import com.smartstudio.fbclm.injection.scopes.PerFragment;
 import com.smartstudio.fbclm.ui.BaseView;
@@ -41,13 +39,6 @@ public class GroupsModule {
 
     public GroupsModule(FragmentActivity activity) {
         mActivity = activity;
-    }
-
-    @PerFragment
-    @ForActivity
-    @Provides
-    Context provideContext() {
-        return mActivity;
     }
 
     @PerFragment

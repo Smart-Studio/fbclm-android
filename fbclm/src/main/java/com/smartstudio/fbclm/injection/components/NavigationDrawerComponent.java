@@ -17,6 +17,7 @@
 package com.smartstudio.fbclm.injection.components;
 
 import com.smartstudio.fbclm.controllers.navigationdrawer.NavigationDrawerActivity;
+import com.smartstudio.fbclm.injection.modules.GroupModule;
 import com.smartstudio.fbclm.injection.modules.GroupsModule;
 import com.smartstudio.fbclm.injection.modules.NavigationDrawerModule;
 import com.smartstudio.fbclm.injection.scopes.PerActivity;
@@ -30,6 +31,8 @@ import dagger.Subcomponent;
 @Subcomponent(modules = NavigationDrawerModule.class)
 public interface NavigationDrawerComponent {
     GroupsComponent plus(GroupsModule module);
+
+    GroupComponent plus(GroupModule module);
 
     void inject(NavigationDrawerActivity activity);
 }

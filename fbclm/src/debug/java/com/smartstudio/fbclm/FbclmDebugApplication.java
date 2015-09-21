@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Smart Studio
+ * Copyright 2015 Smart Studio.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,21 @@
 
 package com.smartstudio.fbclm;
 
+import com.facebook.stetho.Stetho;
+
 /**
  * TODO Add a class header comment
  */
-public class FbclmApplication extends CommonApplication {
+public class FbclmDebugApplication extends FbclmApplication {
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        Stetho.Initializer initializer = Stetho.newInitializerBuilder(this)
+                .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
+                .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
+                .build();
+        Stetho.initialize(initializer);
+    }
 }

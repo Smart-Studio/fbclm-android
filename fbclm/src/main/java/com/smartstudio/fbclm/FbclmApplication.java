@@ -17,7 +17,6 @@
 package com.smartstudio.fbclm;
 
 import android.app.Application;
-import android.content.Context;
 
 import com.crashlytics.android.Crashlytics;
 import com.smartstudio.fbclm.injection.components.DaggerFbclmComponent;
@@ -32,26 +31,31 @@ import timber.log.Timber;
 /**
  * TODO Add javadoc documentation
  */
-public abstract class CommonApplication extends Application {
-    private FbclmComponent component;
+public class FbclmApplication extends Application {
+    private static FbclmApplication sApp;
+    private final FbclmComponent component;
     @Inject
     protected Timber.Tree mTimberTree;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        Fabric.with(this, new Crashlytics());
+    public FbclmApplication() {
+        sApp = this;
         component = DaggerFbclmComponent.builder()
                 .fbclmModule(new FbclmModule(this))
                 .build();
         component.injectApplication(this);
     }
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Fabric.with(this, new Crashlytics());
+    }
+
     public FbclmComponent getComponent() {
         return component;
     }
 
-    public static FbclmApplication get(Context context) {
-        return (FbclmApplication) context.getApplicationContext();
+    public static FbclmApplication get() {
+        return sApp;
     }
 }
