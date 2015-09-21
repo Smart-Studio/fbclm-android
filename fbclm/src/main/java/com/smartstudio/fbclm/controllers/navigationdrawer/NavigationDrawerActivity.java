@@ -31,9 +31,11 @@ import android.view.MenuItem;
 import com.smartstudio.fbclm.DataViewActivity;
 import com.smartstudio.fbclm.FbclmApplication;
 import com.smartstudio.fbclm.R;
+import com.smartstudio.fbclm.controllers.groups.GroupFragment;
 import com.smartstudio.fbclm.controllers.groups.GroupsFragment;
 import com.smartstudio.fbclm.injection.components.NavigationDrawerComponent;
 import com.smartstudio.fbclm.injection.modules.NavigationDrawerModule;
+import com.smartstudio.fbclm.model.Group;
 import com.smartstudio.fbclm.model.League;
 import com.smartstudio.fbclm.ui.navigationdrawer.NavigationDrawerView;
 
@@ -64,7 +66,7 @@ public class NavigationDrawerActivity extends DataViewActivity<List<League>> imp
      * Object that manages all the related view logic for the navigation drawer
      **/
     @Inject
-    protected NavigationDrawerView mView;
+    NavigationDrawerView mView;
     /**
      * Dagger component used by this activity
      **/
@@ -96,7 +98,7 @@ public class NavigationDrawerActivity extends DataViewActivity<List<League>> imp
 
     @Override
     protected void initComponent() {
-        mComponent = FbclmApplication.get(this)
+        mComponent = FbclmApplication.get()
                 .getComponent()
                 .plus(new NavigationDrawerModule(this, this));
         mComponent.inject(this);
@@ -163,10 +165,11 @@ public class NavigationDrawerActivity extends DataViewActivity<List<League>> imp
     private void showLeagueFragment(League league) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        if (league.hasGroups()) {
-            ft.replace(R.id.content_frame, GroupsFragment.newInstance(league));
+        List<Group> groups = league.getGroups();
+        if (groups.size() > 1) {
+            ft.replace(R.id.content_frame, GroupsFragment.newInstance(league.getGroups()));
         } else {
-            ft.replace(R.id.content_frame, GroupsFragment.newInstance(league));
+            ft.replace(R.id.content_frame, GroupFragment.newInstance(groups.get(0)));
         }
         ft.commit();
     }

@@ -27,7 +27,7 @@ import java.util.concurrent.TimeUnit;
  * on debug mode
  */
 @PerApplication
-public abstract class CommonOkHttpClient extends OkHttpClient {
+public abstract class BaseOkHttpClient extends OkHttpClient {
     /**
      * Connection timeout in seconds
      */
@@ -42,7 +42,7 @@ public abstract class CommonOkHttpClient extends OkHttpClient {
      *
      * @param cache Cache used in the OKHttpClient
      **/
-    public CommonOkHttpClient(Cache cache) {
+    public BaseOkHttpClient(Cache cache) {
         super();
         setCache(cache);
         setConnectTimeout(CONNECTION_TIMEOUT, TimeUnit.SECONDS);

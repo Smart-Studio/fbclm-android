@@ -31,7 +31,7 @@ public class PreferencesManagerImpl implements PreferencesManager {
     private static final String PREFERENCES_NAME = "fbclm";
     private static final String SPLASH_SCREEN = "splash_screen";
 
-    private SharedPreferences mSharedPreferences;
+    private final SharedPreferences mSharedPreferences;
 
     /****/
     @Inject

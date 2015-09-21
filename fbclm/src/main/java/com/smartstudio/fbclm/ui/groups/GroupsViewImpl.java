@@ -36,10 +36,10 @@ import butterknife.Bind;
  */
 public class GroupsViewImpl extends BaseViewImpl implements GroupsView {
     @Bind(R.id.sliding_tabs_groups)
-    protected TabLayout mTabLayout;
+    TabLayout mTabLayout;
 
     @Bind(R.id.view_pager_groups)
-    protected ViewPager mViewPager;
+    ViewPager mViewPager;
 
     private final GroupsViewPagerAdapter mViewPagerAdapter;
 
@@ -55,7 +55,7 @@ public class GroupsViewImpl extends BaseViewImpl implements GroupsView {
     }
 
     @Override
-    public void showGroups(List<Group> groups) {
+    public void showGroups(@NonNull List<Group> groups) {
         mViewPagerAdapter.setGroups(groups);
         mTabLayout.setupWithViewPager(mViewPager);
     }

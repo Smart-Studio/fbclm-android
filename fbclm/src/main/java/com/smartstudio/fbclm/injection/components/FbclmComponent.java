@@ -16,9 +16,8 @@
 
 package com.smartstudio.fbclm.injection.components;
 
-import com.smartstudio.fbclm.CommonApplication;
+import com.smartstudio.fbclm.FbclmApplication;
 import com.smartstudio.fbclm.injection.modules.FbclmModule;
-import com.smartstudio.fbclm.injection.modules.GroupsModule;
 import com.smartstudio.fbclm.injection.modules.NavigationDrawerModule;
 import com.smartstudio.fbclm.injection.modules.SplashScreenModule;
 import com.smartstudio.fbclm.injection.scopes.PerApplication;
@@ -36,5 +35,5 @@ public interface FbclmComponent {
 
     NavigationDrawerComponent plus(NavigationDrawerModule module);
 
-    void injectApplication(CommonApplication application);
+    void injectApplication(FbclmApplication application);
 }

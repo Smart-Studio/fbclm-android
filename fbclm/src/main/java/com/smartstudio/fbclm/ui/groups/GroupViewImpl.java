@@ -16,20 +16,16 @@
 
 package com.smartstudio.fbclm.ui.groups;
 
-import android.support.annotation.NonNull;
+import com.smartstudio.fbclm.ui.BaseViewImpl;
 
-import com.smartstudio.fbclm.model.Group;
-import com.smartstudio.fbclm.ui.BaseView;
-
-import java.util.List;
+import javax.inject.Inject;
 
 /**
- * TODO Add a class header comment
+ * TODO Add javadoc documentation
  */
-public interface GroupsView extends BaseView {
-    void showGroups(@NonNull List<Group> groups);
+public class GroupViewImpl extends BaseViewImpl implements GroupView {
 
-    void restoreSelectedGroupPosition(int position);
-
-    int getSelectedGroupPosition();
+    @Inject
+    public GroupViewImpl() {
+    }
 }
