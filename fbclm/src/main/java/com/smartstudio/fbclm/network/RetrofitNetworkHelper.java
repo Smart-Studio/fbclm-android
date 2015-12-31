@@ -17,7 +17,7 @@ import retrofit.http.Query;
  */
 @PerApplication
 public class RetrofitNetworkHelper implements NetworkHelper {
-    private static final String CACHE_HEADER = "Cache-Control: only-if-cached, max-stale="
+    private static final String CACHE_HEADER = "Cache-Control:  only-if-cached, max-stale="
             + Integer.MAX_VALUE;
     private static final String LEAGUES_ENDPOINT = "/leagues";
     private static final String SEASON_PARAM = "season";
