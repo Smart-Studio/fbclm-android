@@ -31,7 +31,7 @@ import javax.inject.Inject;
  */
 public abstract class BaseActivity extends AppCompatActivity {
     /**
-     * Injected base view
+     * Injected base view tet
      **/
     @Inject
     @ForActivity
